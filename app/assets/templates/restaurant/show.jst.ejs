@@ -1,0 +1,20 @@
+<div class="thumbnail">
+  <img>
+</div>
+
+<div class="restaurant-data">
+  <div class="restaurant-title">
+    <h2><%= restaurant.escape('name') %></h2>
+  </div>
+
+  <div class="restaurant-details-primary">
+    <span class="street-address"><%= restaurant.escape('street_address') %></span>
+    <span class="city"><%= restaurant.escape('city') %></span>
+    <span class="state"><%= restaurant.escape('state') %></span>
+    <span class="zip"><%= restaurant.escape('zip') %></span>
+  </div>
+
+  <div class="restaurant-details-secondary">
+    <span class="telephone"><%= restaurant.escape('telephone') %></span>
+  </div>
+</div>
