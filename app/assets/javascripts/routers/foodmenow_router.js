@@ -3,7 +3,8 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
   },
   routes: {
-    '': 'pickRestaurant'
+    '': 'pickRestaurant',
+    'restaurants/:id': 'restaurantMenu'
   },
   pickRestaurant: function () {
     var restaurants = FoodMeNow.Collections.restaurants;
@@ -13,6 +14,11 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
     restaurants.fetch();
     cuisines.fetch();
     this.swapView(pickRestaurant);
+  },
+  restaurantMenu: function (id) {
+    var restaurant = FoodMeNow.Collections.restaurants.getOrFetch(id);
+    var restaurantMenu = new FoodMeNow.Views.RestaurantMenu({ model: restaurant });
+    this.swapView(restaurantMenu);
   },
   swapView: function (newView) {
     this._currentView && this._currentView.remove();

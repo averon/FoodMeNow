@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924004334) do
+ActiveRecord::Schema.define(version: 20140924212027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,30 @@ ActiveRecord::Schema.define(version: 20140924004334) do
   end
 
   add_index "cuisine_tags", ["name"], name: "index_cuisine_tags_on_name", unique: true, using: :btree
+
+  create_table "menu_categories", force: true do |t|
+    t.string   "name",          null: false
+    t.integer  "restaurant_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "ord",           null: false
+  end
+
+  add_index "menu_categories", ["name", "restaurant_id"], name: "index_menu_categories_on_name_and_restaurant_id", unique: true, using: :btree
+  add_index "menu_categories", ["name"], name: "index_menu_categories_on_name", using: :btree
+  add_index "menu_categories", ["restaurant_id"], name: "index_menu_categories_on_restaurant_id", using: :btree
+
+  create_table "menu_items", force: true do |t|
+    t.string   "name",             null: false
+    t.integer  "price",            null: false
+    t.integer  "menu_category_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "menu_items", ["menu_category_id"], name: "index_menu_items_on_menu_category_id", using: :btree
+  add_index "menu_items", ["name", "menu_category_id"], name: "index_menu_items_on_name_and_menu_category_id", unique: true, using: :btree
+  add_index "menu_items", ["name"], name: "index_menu_items_on_name", using: :btree
 
   create_table "restaurants", force: true do |t|
     t.string   "name",           null: false
