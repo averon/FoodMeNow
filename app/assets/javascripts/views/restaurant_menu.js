@@ -12,8 +12,8 @@ FoodMeNow.Views.RestaurantMenu = Backbone.View.extend({
   },
   renderSubviews: function () {
     var menu = this;
-    var $restaurantName = $('.restaurant-name');
-    var $menuItems = $('.menu-items');
+    var $restaurantName = this.$('.restaurant-name');
+    var $menuItems = this.$('.menu-items');
     var name = this.model.escape('name');
 
     $restaurantName.append($('<h3>').html(name));
