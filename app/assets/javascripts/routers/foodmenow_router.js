@@ -17,7 +17,7 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
   },
   restaurantMenu: function (id) {
     var restaurant = FoodMeNow.Collections.restaurants.getOrFetch(id);
-    var restaurantMenu = new FoodMeNow.Views.RestaurantMenu({ model: restaurant });
+    var restaurantMenu = new FoodMeNow.Views.RestaurantShow({ model: restaurant });
     this.swapView(restaurantMenu);
   },
   swapView: function (newView) {

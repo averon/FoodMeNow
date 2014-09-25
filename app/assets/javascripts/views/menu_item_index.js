@@ -1,14 +1,15 @@
-FoodMeNow.Views.MenuItemIndex = Backbone.View.extend({
-  className: 'menu-category',
+FoodMeNow.Views.MenuItemIndex = Backbone.CompositeView.extend({
+  tagName: 'ul',
+  className: 'menu-items',
   render: function () {
-    this.renderSubviews();
+    this.attachSubviews();
     return this;
   },
-  renderSubviews: function () {
+  initialize: function () {
     var view = this;
     this.collection.each(function (item) {
       var menuItem = new FoodMeNow.Views.MenuItemShow({ model: item });
-      view.$el.append(menuItem.render().$el);
+      view.addSubview('.menu-items', menuItem.render());
     });
   },
   capitalizeFirstLetter: function (string) {

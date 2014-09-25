@@ -1,15 +1,15 @@
-FoodMeNow.Views.MenuCategoryShow = Backbone.View.extend({
+FoodMeNow.Views.MenuCategoryShow = Backbone.CompositeView.extend({
   className: 'menu-category',
   template: JST['menu/category'],
   render: function () {
     var renderedTemplate = this.template({ category: this.model });
     this.$el.html(renderedTemplate);
-    this.renderSubviews();
+    this.attachSubviews();
     return this;
   },
-  renderSubviews: function () {
+  initialize: function () {
     var items = this.model.menu_items();
     var itemIndex = new FoodMeNow.Views.MenuItemIndex({ collection: items });
-    this.$el.append(itemIndex.render().$el);
-  }
+    this.addSubview('.category-items', itemIndex.render());
+  } 
 });

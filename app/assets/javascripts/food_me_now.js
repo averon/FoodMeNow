@@ -23,8 +23,10 @@ Backbone.CompositeView = Backbone.View.extend({
     var view = this;
     _(this.subviews()).each(function (subviews, selector) {
       var $el = view.$(selector);
-      // if element is empty, check the view's class itself...
-      debugger;
+
+      if ($el.length === 0 && view.$el.hasClass(selector.slice(1))) {
+        $el = view.$el;
+      }
       $el.empty();
 
       _(subviews).each(function (subview) {

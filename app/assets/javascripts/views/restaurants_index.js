@@ -11,7 +11,7 @@ FoodMeNow.Views.RestaurantIndex = Backbone.View.extend({
   renderContent: function () {
     var indexView = this;
     this.collection.each(function (restaurant) {
-      var li = new FoodMeNow.Views.RestaurantShow({ model: restaurant });
+      var li = new FoodMeNow.Views.RestaurantItem({ model: restaurant });
       indexView.$el.append(li.render().$el);
     });
   }
