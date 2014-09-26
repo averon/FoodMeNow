@@ -8,7 +8,7 @@ FoodMeNow.Views.MenuCategoryShow = Backbone.CompositeView.extend({
     return this;
   },
   initialize: function () {
-    var items = this.model.menu_items();
+    var items = this.model.menuItems();
     var itemIndex = new FoodMeNow.Views.MenuItemIndex({ collection: items });
     this.addSubview('.category-items', itemIndex.render());
   } 

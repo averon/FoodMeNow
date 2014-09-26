@@ -49,3 +49,19 @@
 .restaurant-filter h3 {
   margin: 5px 0;
 }
+
+.menu {
+  float: left;
+}
+
+.user-order {
+  float: right;
+}
+
+.menu .menu-item:hover {
+  background: green;
+}
+
+.user-order .menu-item:hover {
+  background: red;
+}

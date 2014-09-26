@@ -1,18 +1,18 @@
-FoodMeNow.Views.PickRestaurant = Backbone.View.extend({
+FoodMeNow.Views.PickRestaurant = Backbone.CompositeView.extend({
   template: JST['restaurant/pick'],
   render: function () {
     var renderedContent = this.template();
     this.$el.html(renderedContent);
-    this.renderSubviews();
+    this.attachSubviews();
     return this;
   },
-  renderSubviews: function () {
+  initialize: function () {
     var restaurants = FoodMeNow.Collections.restaurants;
     var cuisines = FoodMeNow.Collections.cuisineTags;
     var restaurantFilter = new FoodMeNow.Views.RestaurantFilter({ collection: cuisines });
     var restaurantIndex = new FoodMeNow.Views.RestaurantIndex({ collection: restaurants });
 
-    this.$('.filter').html(restaurantFilter.render().$el);
-    this.$('.restaurants').html(restaurantIndex.render().$el);
+    this.addSubview('.filter', restaurantFilter.render());
+    this.addSubview('.restaurants', restaurantIndex.render());
   }
 });

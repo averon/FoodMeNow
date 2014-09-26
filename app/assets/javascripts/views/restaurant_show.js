@@ -4,17 +4,20 @@ FoodMeNow.Views.RestaurantShow = Backbone.CompositeView.extend({
   render: function () {
     var renderedContent = this.template({ restaurant: this.model });
     this.$el.html(renderedContent);
-    this.renderSubviews();
+    this.attachSubviews();
     return this;
   },
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-  },
-  renderSubviews: function () {
-    var menu = this;
-    var $menuItems = this.$('.menu-items');
+    
+    var userOrder = new FoodMeNow.Views.OrderShow({ model: this.order() });
+    this.addSubview('.user-order', userOrder.render()); 
 
     var categoryIndex = new FoodMeNow.Views.MenuCategoryIndex({ model: this.model });
-    $menuItems.html(categoryIndex.render().$el);
+    this.addSubview('.menu', categoryIndex.render());
+  },
+  order: function () {
+    this._order = this._order || new FoodMeNow.Models.Order();
+    return this._order;
   }
 });

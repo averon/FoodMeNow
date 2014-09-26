@@ -1,15 +1,15 @@
 FoodMeNow.Models.Restaurant = Backbone.Model.extend({
   urlRoot: '/api/restaurants',
-  menu_categories: function () {
-    if (!this._menu_categories) {
-      this._menu_categories = new FoodMeNow.Collections.MenuCategories();
-      this._menu_categories.comparator = 'ord';
+  menuCategories: function () {
+    if (!this._menuCategories) {
+      this._menuCategories = new FoodMeNow.Collections.MenuCategories();
+      this._menuCategories.comparator = 'ord';
     }
-    return this._menu_categories
+    return this._menuCategories
   },
   parse: function (response, options) {
     if (response.menu_categories) {
-      this.menu_categories().set(response.menu_categories, { parse: true });
+      this.menuCategories().set(response.menu_categories, { parse: true });
       delete response.menu_categories;
     }
     return response;

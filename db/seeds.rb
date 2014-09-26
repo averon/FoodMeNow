@@ -75,6 +75,7 @@ menu_items = MenuItem.create([
   { name: "Lasanga", price: 9, menu_category_id: 6 },
   { name: "Ravioli", price: 9, menu_category_id: 6 },
   { name: "Garlic Bread", price: 3, menu_category_id: 7 },
+  { name: "Chocolate Chip", price: 2, menu_category_id: 8 },
   { name: "Chocolate Cake", price: 3, menu_category_id: 8 },
   { name: "Cheesecake", price: 3, menu_category_id: 8 }
 ])

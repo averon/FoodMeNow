@@ -7,10 +7,17 @@ FoodMeNow.Views.MenuCategoryIndex = Backbone.CompositeView.extend({
   },
   initialize: function () {
     var view = this;
-    var categories = this.model.menu_categories();
+    var categories = this.model.menuCategories();
     categories.each(function (category) {
       var categoryShow = new FoodMeNow.Views.MenuCategoryShow({ model: category });
       view.addSubview('.menu-categories', categoryShow.render());
     });
-  } 
+
+    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model.menuCategories(), 'add', this.addMenuCategory);
+  },
+  addMenuCategory: function (category) {
+    var categoryShow = new FoodMeNow.Views.MenuCategoryShow({ model: category });
+    this.addSubview('.menu-categories', categoryShow.render());
+  },
 });

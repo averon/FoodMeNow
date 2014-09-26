@@ -1,0 +1,14 @@
+<h3>Your Order</h3>
+
+<div class="order-items">
+</div>
+
+<ul class="checkout-info">
+  <li class="tax">Tax: $<%= order.escape('tax') %></li>
+  <li class="tip">Tip: $<%= order.escape('tip') %></li>
+  <li class="price">Total: $<%= order.escape('price') %></li>
+</ul>
+
+<% if (order.escape('price') !== "0.00") { %>
+  <button class="checkout">Checkout</button>
+<% } %>

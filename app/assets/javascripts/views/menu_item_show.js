@@ -5,5 +5,11 @@ FoodMeNow.Views.MenuItemShow = Backbone.View.extend({
     var renderedContent = this.template({ item: this.model });
     this.$el.html(renderedContent);
     return this;
+  },
+  events: {
+    'click': 'addToCart'
+  },
+  addToCart: function () {
+    PubSub.publish('order', this.model);
   }
 });

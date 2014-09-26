@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :cuisine_tags, only: [:index]
     resources :menu_categories, only: [:show]
     resources :menu_items, only: [:show]
+    resources :orders, only: [:new, :create, :show]
   end
 
   root 'static_pages#root'

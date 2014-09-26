@@ -1,2 +1,2 @@
-<li><%= item.escape('name') %></li>
-<li>$<%= item.escape('price') %></li>
+<li class="item-name"><%= item.escape('name') %></li>
+<li class="item-price">$<%= parseInt(item.escape('price')).toFixed(2) %></li>
