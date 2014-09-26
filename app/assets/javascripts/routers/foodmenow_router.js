@@ -3,10 +3,11 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
   },
   routes: {
-    '': 'pickRestaurant',
-    'restaurants/:id': 'restaurantMenu'
+    '': 'restaurantsIndex',
+    'restaurants/:id': 'menuShow',
+    'checkout': 'checkout'
   },
-  pickRestaurant: function () {
+  restaurantsIndex: function () {
     var restaurants = FoodMeNow.Collections.restaurants;
     var cuisines = FoodMeNow.Collections.cuisineTags;
     var pickRestaurant = new FoodMeNow.Views.RestaurantIndex();
@@ -15,10 +16,14 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
     cuisines.fetch();
     this.swapView(pickRestaurant);
   },
-  restaurantMenu: function (id) {
+  menuShow: function (id) {
     var restaurant = FoodMeNow.Collections.restaurants.getOrFetch(id);
     var restaurantMenu = new FoodMeNow.Views.MenuShow({ model: restaurant });
     this.swapView(restaurantMenu);
+  },
+  checkout: function () {
+    var checkout = new FoodMeNow.Views.Checkout();
+    this.swapView(checkout);
   },
   swapView: function (newView) {
     this._currentView && this._currentView.remove();
