@@ -9,7 +9,7 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
   pickRestaurant: function () {
     var restaurants = FoodMeNow.Collections.restaurants;
     var cuisines = FoodMeNow.Collections.cuisineTags;
-    var pickRestaurant = new FoodMeNow.Views.PickRestaurant();
+    var pickRestaurant = new FoodMeNow.Views.RestaurantIndex();
 
     restaurants.fetch();
     cuisines.fetch();
@@ -17,7 +17,7 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
   },
   restaurantMenu: function (id) {
     var restaurant = FoodMeNow.Collections.restaurants.getOrFetch(id);
-    var restaurantMenu = new FoodMeNow.Views.RestaurantShow({ model: restaurant });
+    var restaurantMenu = new FoodMeNow.Views.MenuShow({ model: restaurant });
     this.swapView(restaurantMenu);
   },
   swapView: function (newView) {

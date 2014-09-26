@@ -1,4 +1,4 @@
-FoodMeNow.Views.MenuItemShow = Backbone.View.extend({
+FoodMeNow.Views.MenuItem = Backbone.View.extend({
   className: 'menu-item',
   template: JST['menu/item'],
   render: function () {

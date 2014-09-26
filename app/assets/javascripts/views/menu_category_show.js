@@ -8,8 +8,19 @@ FoodMeNow.Views.MenuCategoryShow = Backbone.CompositeView.extend({
     return this;
   },
   initialize: function () {
-    var items = this.model.menuItems();
-    var itemIndex = new FoodMeNow.Views.MenuItemIndex({ collection: items });
-    this.addSubview('.category-items', itemIndex.render());
+    var view = this;
+    this.model.menuItems().each(function (item) {
+      var menuItem = new FoodMeNow.Views.MenuItem({ model: item });
+      view.addSubview('.category-items', menuItem.render());
+    });
+    this.listenTo(this.model.menuItems(), 'add', this.addMenuItem);
+    this.listenTo(this.model.menuItems(), 'add remove', this.render);
+  },
+  addMenuItem: function (item) {
+    var itemShow = new FoodMeNow.Views.MenuItem({ model: item });
+    this.addSubview('.category-items', itemShow.render());
+  },
+  capitalizeFirstLetter: function (string) {
+    return string.charAt(0).toUpperCase() + string.slice(1); 
   } 
 });

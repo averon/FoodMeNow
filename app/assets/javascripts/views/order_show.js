@@ -9,18 +9,24 @@ FoodMeNow.Views.OrderShow = Backbone.CompositeView.extend({
   },
   initialize: function () {
     this.listenTo(this.model, 'sync change', this.render);
-    this.listenTo(this.model.orderItems(), 'add remove', this.render);
+    this.listenTo(this.model.orderItems(), 'add', this.addOrderItem);
+    this.listenTo(this.model.orderItems(), 'remove', this.render);
 
     PubSub.subscribe('order', this.addItem.bind(this));
 
-    var orderItems = this.model.orderItems();
-    var itemIndex = new FoodMeNow.Views.MenuItemIndex({ collection: orderItems });
-    this.addSubview('.order-items', itemIndex);
-  },
-  events: {
-
+    var view = this;
+    this.model.orderItems().each(function (item) {
+      var orderItem = new FoodMeNow.Views.OrderItem({ model: item });
+      view.addSubview('.order-items', orderItem.render());
+    });
   },
   addItem: function (channel, item) {
-    this.model.addItem(item);
+    var newOrderItem = this.model.addItem(item);
+
+    if (newOrderItem) {
+      var orderItem = new FoodMeNow.Views.OrderItem({ model: item });
+      this.addSubview('.order-items', orderItem.render());
+      this.render();
+    }
   }
 });

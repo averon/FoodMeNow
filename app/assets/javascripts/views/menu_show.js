@@ -1,4 +1,4 @@
-FoodMeNow.Views.RestaurantShow = Backbone.CompositeView.extend({
+FoodMeNow.Views.MenuShow = Backbone.CompositeView.extend({
   className: 'restaurant-menu',
   template: JST['restaurant/menu'],
   render: function () {

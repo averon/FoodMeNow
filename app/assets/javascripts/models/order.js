@@ -10,8 +10,16 @@ FoodMeNow.Models.Order = Backbone.Model.extend({
     return this._orderItems;
   },
   addItem: function (orderItem) {
-    this.orderItems().add(orderItem);
-    this.calculate();
+    var existingItem = this.orderItems().get(orderItem);
+
+    if (existingItem) {
+      existingItem.set({numOrders: existingItem.get('numOrders') + 1});
+      this.calculate();
+    } else {
+      this.orderItems().add(orderItem.set({ numOrders: 1 }));
+      this.calculate();
+      return new FoodMeNow.Views.OrderItem({ model: this });
+    }
   },
   removeItem: function (orderItem) {
     var idx = this.menuItems.indexOf(orderItem);
@@ -23,10 +31,11 @@ FoodMeNow.Models.Order = Backbone.Model.extend({
 
     this.orderItems().each(function (item) {
       price = parseInt(item.escape('price'));
-      preTax += price;
+      numOrders = parseInt(item.escape('numOrders'));
+      preTax += price * numOrders;
     });
 
-    tax = preTax * 0.065;
+    tax = preTax * 0.085;
     tip = 2;
     total = preTax + tax + tip; 
     this.set({ price: total.toFixed(2), tax: tax.toFixed(2), tip: tip.toFixed(2) });
