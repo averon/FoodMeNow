@@ -12,8 +12,7 @@ FoodMeNow.Views.MenuShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.menuCategories(), 'sync add', this.render);
     this.listenTo(this.model.menuCategories(), 'add', this.addMenuCategory);
     
-    var userOrder = new FoodMeNow.Views.OrderShow({ model: this.order() });
-    this.addSubview('.user-order', userOrder.render()); 
+    this.addSubview('.user-order', FoodMeNow.currentCart.render()); 
 
     var view = this;
     var categories = this.model.menuCategories();
@@ -24,9 +23,5 @@ FoodMeNow.Views.MenuShow = Backbone.CompositeView.extend({
   addMenuCategory: function (category) {
     var categoryShow = new FoodMeNow.Views.MenuCategoryShow({ model: category });
     this.addSubview('.menu', categoryShow.render());
-  },
-  order: function () {
-    this._order = this._order || new FoodMeNow.Models.Order();
-    return this._order;
   }
 });

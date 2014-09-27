@@ -5,14 +5,24 @@ window.FoodMeNow = {
   Routers: {},
   initialize: function () { 
     new FoodMeNow.Routers.FoodMeNowRouter({
-      $rootEl: $('#main')
+      $rootEl: $('#main'),
     });
     Backbone.history.start();
+  },
+  setGlobals: function () {
+    FoodMeNow.currentUser;
+    FoodMeNow.currentOrder = new FoodMeNow.Models.Order();
+    FoodMeNow.currentCart = new FoodMeNow.Views.OrderShow({
+      model: FoodMeNow.currentOrder
+    });
+    FoodMeNow.navbar = new FoodMeNow.Views.Navbar();
+    FoodMeNow.$navbar = $('#fmn-navbar');
   }
 }
 
 $(document).ready(function () { 
-  FoodMeNow.initialize()
+  FoodMeNow.setGlobals();
+  FoodMeNow.initialize();
 });
 
 Backbone.CompositeView = Backbone.View.extend({

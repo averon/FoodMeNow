@@ -9,15 +9,14 @@
         Cart
       </a>
       <ul class="dropdown-menu user-order">
-        <li>There are currently 0 items in your cart!</li>
       </ul>
     </li>
     <li>
-      <% if signed_in? %>
+      <% if (FoodMeNow.currentUser) { %>
         <a href='#'>Sign out</a>
-      <% else %>
+      <% } else { %>
         <a href='#'>Sign in</a>
-      <% end %>
+      <% } %>
     </li>
   </ul>
 </nav>

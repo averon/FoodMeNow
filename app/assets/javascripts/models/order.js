@@ -13,7 +13,6 @@ FoodMeNow.Models.Order = Backbone.Model.extend({
     var existingItem = this.orderItems().get(orderItem);
 
     if (existingItem) {
-      debugger;
       existingItem.set({numOrders: existingItem.get('numOrders') + 1});
       this.calculate();
     } else {
