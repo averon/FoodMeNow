@@ -8,5 +8,10 @@ FoodMeNow.Views.Navbar = Backbone.CompositeView.extend({
   },
   initialize: function () {
     this.addSubview('.order-cart', this.model.render());
+    this.closable = false;
+  },
+  events: {
+    'click .cart-button': function () { this.closable = !this.closable },
+    'hide.bs.dropdown .btn-group': function () { return this.closable; }
   }
 });

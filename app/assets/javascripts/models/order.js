@@ -25,11 +25,10 @@ FoodMeNow.Models.Order = Backbone.Model.extend({
     var existingItem = this.orderItems().get(orderItem);
     if (existingItem && existingItem.get('numOrders') > 1) {
       existingItem.set({ numOrders: existingItem.get('numOrders') - 1 });
-      this.calculate();
     } else if (existingItem) {
       this.orderItems().remove(existingItem);
-      this.calculate();
     }
+    this.calculate();
   },
   calculate: function () {
     var price, tax, tip, total, preTax = 0;

@@ -5,7 +5,7 @@ FoodMeNow.Views.OrderShow = Backbone.CompositeView.extend({
     var renderedContent = this.template({ order: this.model });
     this.$el.html(renderedContent);
     this.attachSubviews();
-    this.toggleDropdown();
+    this.resetDropdown();
     return this;
   },
   initialize: function () {
@@ -40,11 +40,11 @@ FoodMeNow.Views.OrderShow = Backbone.CompositeView.extend({
 
     this.addSubview('.order-items', orderItem.render());
  },
- toggleDropdown: function () { 
+ resetDropdown: function () { 
     if (!this.model.isEmpty()) {
-      $('.dropdown').addClass('open');
+      $('.btn-group').addClass('open');
     } else {
-      $('.dropdown').removeClass('open');
+      $('.btn-group').removeClass('open');
     }
- }
+ },
 });

@@ -27,6 +27,7 @@ FoodMeNow.Views.SignIn = Backbone.View.extend({
         $('.modal-open').removeClass();
         $('.modal-backdrop').remove();
         Backbone.history.navigate('#/checkout');
+        $('.dropdown .btn-group').addClass('open');
       },
       error: function (response, options) {
         var $alert = this.$('.alert');
