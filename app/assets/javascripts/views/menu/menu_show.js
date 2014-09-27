@@ -12,7 +12,8 @@ FoodMeNow.Views.MenuShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.menuCategories(), 'sync add', this.render);
     this.listenTo(this.model.menuCategories(), 'add', this.addMenuCategory);
     
-    this.addSubview('.user-order', FoodMeNow.currentCart.render()); 
+    var checkout = new FoodMeNow.Views.SignIn();
+    this.addSubview('.checkout', checkout.render());
 
     var view = this;
     var categories = this.model.menuCategories();

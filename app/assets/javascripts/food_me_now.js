@@ -8,20 +8,21 @@ window.FoodMeNow = {
       $rootEl: $('#main'),
     });
     Backbone.history.start();
+    FoodMeNow.createNavbar()
   },
-  setGlobals: function () {
-    FoodMeNow.currentUser;
-    FoodMeNow.currentOrder = new FoodMeNow.Models.Order();
-    FoodMeNow.currentCart = new FoodMeNow.Views.OrderShow({
-      model: FoodMeNow.currentOrder
+  createNavbar: function () {
+    currentOrder = new FoodMeNow.Models.Order();
+    currentCart = new FoodMeNow.Views.OrderShow({
+      model: currentOrder
     });
-    FoodMeNow.navbar = new FoodMeNow.Views.Navbar();
-    FoodMeNow.$navbar = $('#fmn-navbar');
+    navbar = new FoodMeNow.Views.Navbar({
+      model: currentCart 
+    });
+    $('#fmn-navbar').html(navbar.render().$el);
   }
 }
 
 $(document).ready(function () { 
-  FoodMeNow.setGlobals();
   FoodMeNow.initialize();
 });
 

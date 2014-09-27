@@ -9,11 +9,9 @@
   <li class="price">Total: $<%= order.escape('price') %></li>
 </ul>
 
-<% if (order.escape('price') !== "0.00") { %>
-  <button class="btn btn-primary"
-          data-toggle="modal"
-          data-target="#checkout">Checkout</button>
-<% } %>
+<button class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#checkout">Checkout</button>
 
 <div class="checkout">
 </div>

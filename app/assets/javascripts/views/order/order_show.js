@@ -5,6 +5,7 @@ FoodMeNow.Views.OrderShow = Backbone.CompositeView.extend({
     var renderedContent = this.template({ order: this.model });
     this.$el.html(renderedContent);
     this.attachSubviews();
+    this.toggleDropdown();
     return this;
   },
   initialize: function () {
@@ -17,8 +18,6 @@ FoodMeNow.Views.OrderShow = Backbone.CompositeView.extend({
       this.newItem(item);
     });
 
-    var checkout = new FoodMeNow.Views.SignIn();
-    this.addSubview('.checkout', checkout.render());
   },
   addItem: function (channel, item) {
     var newOrderItem = this.model.addItem(item);
@@ -40,5 +39,12 @@ FoodMeNow.Views.OrderShow = Backbone.CompositeView.extend({
     this.listenTo(orderItem, 'removeOrderItem', this.removeItem);
 
     this.addSubview('.order-items', orderItem.render());
+ },
+ toggleDropdown: function () { 
+    if (!this.model.isEmpty()) {
+      $('.dropdown').addClass('open');
+    } else {
+      $('.dropdown').removeClass('open');
+    }
  }
 });

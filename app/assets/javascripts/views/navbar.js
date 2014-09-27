@@ -1,7 +1,11 @@
-FoodMeNow.Views.Navbar = Backbone.View.extend({
+FoodMeNow.Views.Navbar = Backbone.CompositeView.extend({
   template: JST['navbar'],
   render: function () {
-    this.$el.html(this.template());
+    this.$el.html(this.template({ order: this.model.model }));
+    this.attachSubviews();
     return this;
+  },
+  initialize: function () {
+    this.addSubview('.order-cart', this.model.render());
   }
 });

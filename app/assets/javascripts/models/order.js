@@ -41,8 +41,11 @@ FoodMeNow.Models.Order = Backbone.Model.extend({
     });
 
     tax = preTax * 0.085;
-    tip = 2;
+    tip = (this.isEmpty() ? 0 : 2);
     total = preTax + tax + tip; 
     this.set({ price: total.toFixed(2), tax: tax.toFixed(2), tip: tip.toFixed(2) });
+  },
+  isEmpty: function () {
+    return this.orderItems().length === 0
   }
 });
