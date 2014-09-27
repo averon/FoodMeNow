@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
+
+User.create(email: 'guest@food-me-now.com', password: 'guest_password')
+
 restaurants = Restaurant.create([
   { name: "Supreme Pizza",
     street_address: "3348 18th Street (18th St. & Capp St.)",

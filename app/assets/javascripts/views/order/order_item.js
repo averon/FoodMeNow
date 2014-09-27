@@ -9,5 +9,11 @@ FoodMeNow.Views.OrderItem = Backbone.View.extend({
   },
   initialize: function () {
     this.listenTo(this.model, 'change', this.render);
+  },
+  events: {
+    'click': 'removeItem'
+  },
+  removeItem: function () {
+    this.trigger('removeOrderItem', this);
   }
 });

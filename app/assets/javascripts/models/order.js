@@ -13,6 +13,7 @@ FoodMeNow.Models.Order = Backbone.Model.extend({
     var existingItem = this.orderItems().get(orderItem);
 
     if (existingItem) {
+      debugger;
       existingItem.set({numOrders: existingItem.get('numOrders') + 1});
       this.calculate();
     } else {
@@ -22,9 +23,14 @@ FoodMeNow.Models.Order = Backbone.Model.extend({
     }
   },
   removeItem: function (orderItem) {
-    var idx = this.menuItems.indexOf(orderItem);
-    this.orderItems().splice(idx, 1);
-    this.calculate();
+    var existingItem = this.orderItems().get(orderItem);
+    if (existingItem && existingItem.get('numOrders') > 1) {
+      existingItem.set({ numOrders: existingItem.get('numOrders') - 1 });
+      this.calculate();
+    } else if (existingItem) {
+      this.orderItems().remove(existingItem);
+      this.calculate();
+    }
   },
   calculate: function () {
     var price, tax, tip, total, preTax = 0;

@@ -9,24 +9,36 @@ FoodMeNow.Views.OrderShow = Backbone.CompositeView.extend({
   },
   initialize: function () {
     this.listenTo(this.model, 'sync change', this.render);
-    this.listenTo(this.model.orderItems(), 'add', this.addOrderItem);
-    this.listenTo(this.model.orderItems(), 'remove', this.render);
 
     PubSub.subscribe('order', this.addItem.bind(this));
 
     var view = this;
     this.model.orderItems().each(function (item) {
-      var orderItem = new FoodMeNow.Views.OrderItem({ model: item });
-      view.addSubview('.order-items', orderItem.render());
+      this.newItem(item);
     });
+
+    var checkout = new FoodMeNow.Views.SignIn();
+    this.addSubview('.checkout', checkout.render());
   },
   addItem: function (channel, item) {
     var newOrderItem = this.model.addItem(item);
 
     if (newOrderItem) {
-      var orderItem = new FoodMeNow.Views.OrderItem({ model: item });
-      this.addSubview('.order-items', orderItem.render());
+      this.newItem(item);
       this.render();
     }
-  }
+  },
+  removeItem: function (itemView) {
+    this.model.removeItem(itemView.model);
+    if (!this.model.orderItems().get(itemView.model)) {
+      this.removeSubview('.order-items', itemView);
+    }
+  },
+  newItem: function (item) {
+    var orderItems = this.model.orderItems();
+    var orderItem = new FoodMeNow.Views.OrderItem({ model: item });
+    this.listenTo(orderItem, 'removeOrderItem', this.removeItem);
+
+    this.addSubview('.order-items', orderItem.render());
+ }
 });

@@ -1,6 +1,6 @@
 FoodMeNow.Views.MenuCategoryIndex = Backbone.CompositeView.extend({
-  tagName: 'ul',
-  className: 'menu-categories',
+//  tagName: 'ul',
+//  className: 'menu-categories',
   render: function () {
     this.attachSubviews();
     return this;
@@ -9,7 +9,7 @@ FoodMeNow.Views.MenuCategoryIndex = Backbone.CompositeView.extend({
     var view = this;
     var categories = this.model.menuCategories();
     categories.each(function (category) {
-      this.addMenuCategory(category);
+      view.addMenuCategory(category);
     });
 
     this.listenTo(this.model, 'sync', this.render);
@@ -17,6 +17,6 @@ FoodMeNow.Views.MenuCategoryIndex = Backbone.CompositeView.extend({
   },
   addMenuCategory: function (category) {
     var categoryShow = new FoodMeNow.Views.MenuCategoryShow({ model: category });
-    this.addSubview('.menu-categories', categoryShow.render());
+    this.addSubview('.category-items', categoryShow.render());
   },
 });

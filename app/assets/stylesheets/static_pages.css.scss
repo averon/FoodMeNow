@@ -54,14 +54,36 @@
   float: left;
 }
 
-.user-order {
-  float: right;
+.menu-categories {
+  padding-left: 0;
 }
 
-.menu .menu-item:hover {
+.menu-category {
+  clear: both;
+}
+
+.menu-item {
+  float: left;
+  margin: 0 10px 20px 0;
+}
+
+.menu-item:hover {
   background: green;
 }
 
-.user-order .menu-item:hover {
+.menu-item img {
+  width: 200px;
+  height: 100px;
+  background: blue;
+}
+
+.menu-item li {
+  list-style: none;
+}
+
+.user-order {
+}
+
+.user-order .order-item:hover {
   background: red;
 }

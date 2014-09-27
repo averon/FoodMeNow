@@ -6,17 +6,16 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_credentials(
-      params[:user][:email],
-      params[:user][:password]
+      params[:email],
+      params[:password]
     )
 
     if @user 
       login!(@user)
-      flash[:success] = ["Successfully logged in as #{@user}"]
-      redirect_to users_url
+      flash.now[:success] = ["Successfully logged in as #{@user}"]
+      render :show
     else
-      flash.now[:errors] = ["Invalid email/password combination"]
-      render :new
+      render json: @user, status: :unprocessable_entity
     end
   end
 
