@@ -1,3 +1,11 @@
+#fmn-navbar .navbar {
+  margin-bottom: 0;
+}
+
+#main {
+  margin-top: 52px;
+}
+
 .thumbnail {
   float: left;
 }
@@ -81,9 +89,42 @@
   list-style: none;
 }
 
-.user-order {
+.order-items {
+  margin-top: 25px;
+  padding-bottom: 26px;
+  border-bottom: 1px dotted grey;
 }
 
-.order-cart .order-item:hover {
+.order-item {
+  margin-top: 21px;
+  padding: 0;
+}
+
+.order-item:hover {
   background: red;
 }
+
+.order {
+  padding: 0 30px 10px;
+}
+
+.order {
+  width: 400px;
+}
+
+.order .header {
+  margin: 25px 0 26px 0;
+}
+
+.order li {
+  list-style: none;
+}
+
+.order ul {
+  padding: 0;
+}
+
+.checkout-info {
+  margin-top: 18px;
+}
+
