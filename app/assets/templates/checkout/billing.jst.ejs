@@ -13,7 +13,8 @@
              type="text"
              maxlength="20"
              pattern="\d*"
-             placeholder="Card Number">
+             placeholder="Card Number"
+             value=<%= payment_method.escape('card_number') %>>
     </div>
   </div>
 
@@ -27,7 +28,8 @@
              type="text"
              maxlength="7"
              pattern="\d*"
-             placeholder="MM/YY">
+             placeholder="MM/YY"
+             value=<%= payment_method.escape('exp_date') %>>
     </div>
   </div>
 
@@ -41,7 +43,8 @@
              type="text"
              maxlength="4"
              pattern="\d*"
-             placeholder="CCV">
+             placeholder="CVV"
+             value=<%= payment_method.escape('cvv') %>>
     </div>
   </div>
 
@@ -54,7 +57,8 @@
              type="text"
              maxlength="5"
              pattern="\d*"
-             placeholder="ZIP"> 
+             placeholder="ZIP" 
+             value=<%= payment_method.escape('zip') %>>
     </div>
   </div>
 </div>

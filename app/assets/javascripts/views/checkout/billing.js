@@ -3,7 +3,8 @@ FoodMeNow.Views.Billing = Backbone.View.extend({
   className: 'user-billing-info',
   template: JST['checkout/billing'],
   render: function () {
-    this.$el.html(this.template());
+    debugger;
+    this.$el.html(this.template({ payment_method: this.model }));
     return this;
   }
 });

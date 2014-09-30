@@ -7,7 +7,27 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 
-User.create(email: 'guest@food-me-now.com', password: 'guest_password')
+user = User.create(email: 'guest@food-me-now.com', password: 'guest_password')
+
+delivery_address = DeliveryAddress.create(
+  user_id: 1,
+  full_name: 'Honorable Guest', 
+  street_address: '123 Market St.',
+  city: 'San Francisco',
+  state: 'CA',
+  postal_code: '94110',
+  tel: '555-555-5555',
+  current_address: true
+)
+
+payment_method = PaymentMethod.create(
+  card_number: '5555555555555555',
+  exp_date: '08/16',
+  cvv: '648',
+  zip: '94110',
+  user_id: 1,
+  current_billing: true
+)
 
 restaurants = Restaurant.create([
   { name: "Supreme Pizza",
@@ -93,10 +113,4 @@ delivery_address = DeliveryAddress.create(
   user_id: 1
 )
 
-payment_method = PaymentMethod.create(
-  card_number: '5555-5555-5555-5555',
-  exp_date: '09/2016',
-  cvv: '347',
-  zip: '94110',
-  user_id: 1
-)
+

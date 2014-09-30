@@ -11,8 +11,15 @@ json.delivery_addresses @user.delivery_addresses do |delivery_info|
   json.tel            delivery_info.tel
 end
 
-json.payment_methods @user.payment_methods do |payment_methods|
-  json.card_number payment_method.card_number
+json.current_billing do
+  json.card_number @user.current_billing.card_number.scan(/.{4}|.+/).join("-")
+  json.exp_date    @user.current_billing.exp_date
+  json.cvv         @user.current_billing.cvv
+  json.zip         @user.current_billing.zip
+end
+
+json.payment_methods @user.payment_methods do |payment_method|
+  json.card_number payment_method.card_number.scan(/.{4}|.+/).join("-")
   json.exp_date    payment_method.exp_date
   json.cvv         payment_method.cvv
   json.zip         payment_method.zip

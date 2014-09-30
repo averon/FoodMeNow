@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
     delivery_addresses.find_by_current_address(true)
   end
 
+  def current_billing
+    payment_methods.find_by_current_billing(true)
+  end
+
   private
 
   def ensure_session_token

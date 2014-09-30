@@ -6,24 +6,13 @@ FoodMeNow.Views.Checkout = Backbone.CompositeView.extend({
     return this;
   },
   initialize: function () {
-//    var deliveryAddresses = FoodMeNow.currentUser.deliveryAddresses();
-//    _(deliveryAddresses).each(function (address) {
-//      var savedDeliveryView = new FoodMeNow.Views.DeliverySaved({ model: address });
-//      this.addSubview('.delivery-details', savedDeliveryView.render());
-//    });
-
-    if (FoodMeNow.currentUser) {
-      var currentDeliveryAddress = FoodMeNow.currentUser.currentAddress();
-      var currentDeliveryView = new FoodMeNow.Views.DeliverySaved({
-        model: currentDeliveryAddress
-      });
-      this.addSubview('.delivery-details', currentDeliveryView.render());
+    if (!FoodMeNow.currentUser.isNew()) {
+      this.currentDeliveryView();
+      this.currentBillingView();
     } else {
       this.newDeliveryView();
+      this.newBillingView();
     }
-
-    var billing = new FoodMeNow.Views.Billing();
-    this.addSubview('.billing-information', billing.render());
   },
   events: {
     'click .place-order': 'placeOrder',
@@ -31,6 +20,17 @@ FoodMeNow.Views.Checkout = Backbone.CompositeView.extend({
   },
   placeOrder: function () {
     Backbone.history.navigate('#/confirmation')
+  },
+  currentDeliveryView: function () {
+    var currentDeliveryAddress = FoodMeNow.currentUser.currentAddress();
+    if (currentDeliveryAddress) {
+      var currentDeliveryView = new FoodMeNow.Views.DeliverySaved({
+        model: currentDeliveryAddress
+      });
+      this.addSubview('.delivery-details', currentDeliveryView.render());
+    } else {
+      this.newDeliveryView();
+    }
   },
   newDeliveryView: function () {
     var currentViews = this.subviews('.delivery-details');
@@ -41,5 +41,27 @@ FoodMeNow.Views.Checkout = Backbone.CompositeView.extend({
     var newDeliveryView = new FoodMeNow.Views.DeliveryNew();
     this.addSubview('.delivery-details', newDeliveryView.render());
     this.render();
-  }
+  },
+  currentBillingView: function () {
+    var currentBilling = FoodMeNow.currentUser.currentBilling();
+    if (currentBilling) {
+      var billing = new FoodMeNow.Views.Billing({
+        model: currentBilling
+      });
+      this.addSubview('.billing-information', billing.render());
+    }
+  },
+  newBillingView: function () {
+    var currentViews = this.subviews('.billing-information');
+    if (currentViews.length > 0) {
+      this.removeSubview('.billing-information', currentViews[0]);
+    }
+
+    var currentBilling = FoodMeNow.currentUser.currentBilling();
+    var newBillingView = new FoodMeNow.Views.Billing({
+      model: currentBilling
+    });
+    this.addSubview('.billing-information', newBillingView.render());
+    this.render();
+  },
 });

@@ -4,11 +4,11 @@ window.FoodMeNow = {
   Views: {},
   Routers: {},
   initialize: function () { 
+    FoodMeNow.defineGlobals();
     new FoodMeNow.Routers.FoodMeNowRouter({
       $rootEl: $('#main'),
     });
     Backbone.history.start();
-    FoodMeNow.defineGlobals();
     FoodMeNow.createNavbar();
     FoodMeNow.addModal();
   },

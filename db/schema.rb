@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929171145) do
+ActiveRecord::Schema.define(version: 20140930053513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,13 +85,14 @@ ActiveRecord::Schema.define(version: 20140929171145) do
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "payment_methods", force: true do |t|
-    t.string   "card_number", null: false
-    t.string   "exp_date",    null: false
-    t.string   "cvv",         null: false
-    t.string   "zip",         null: false
-    t.integer  "user_id",     null: false
+    t.string   "card_number",                     null: false
+    t.string   "exp_date",                        null: false
+    t.string   "cvv",                             null: false
+    t.string   "zip",                             null: false
+    t.integer  "user_id",                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "current_billing", default: false
   end
 
   add_index "payment_methods", ["user_id"], name: "index_payment_methods_on_user_id", using: :btree
