@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :delivery_addresses
+  has_many :payment_methods  
+
   def self.find_by_credentials(email, password)
     found_user = self.find_by_email(email)
     
@@ -30,6 +33,10 @@ class User < ActiveRecord::Base
 
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def current_address
+    delivery_addresses.find_by_current_address(true)
   end
 
   private

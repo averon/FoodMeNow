@@ -1,0 +1,21 @@
+<h2>Delivery Information</h2>
+
+<div class="checkout-option saved-delivery">
+  <div class="radio-inline">
+    <input checked="checked" class="checkout_option-radio" type="radio">
+    <div class="checkout_option-label">
+      <p>
+        <strong><%= delivery_address.escape('full_name') %></strong>
+      </p>
+      <p><%= delivery_address.escape('street_address') %></p>
+      <p><%= delivery_address.escape('city') %>, <%= delivery_address.escape('state') %> <%= delivery_address.escape('zip') %></p>
+      <p><%= delivery_address.escape('tel') %></p>
+    </div>
+  </div>
+</div>
+
+<div class="checkout-option new-delivery-address">
+  <div class="radio-inline">
+  <input class="checkout_option-radio" type="radio">
+  <span class="checkout_option-label">Enter a different delivery address</span>
+</div>

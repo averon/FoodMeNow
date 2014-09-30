@@ -19,10 +19,10 @@
     </li>
 
     <li>
-      <% if (FoodMeNow.currentUser) { %>
-        <a href='#'>Sign out</a>
+      <% if (!FoodMeNow.currentUser.isNew()) { %>
+        <a class="sign-out" href='#'>Sign out</a>
       <% } else { %>
-        <a href='#'>Sign in</a>
+        <a class="sign-in" href='#'>Sign in</a>
       <% } %>
     </li>
   </ul>

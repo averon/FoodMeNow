@@ -1,7 +1,17 @@
 class SessionsController < ApplicationController
+  def index
+    @user = User.all
+    render :index
+  end
+
   def new
     @user = User.new
     render :new
+  end
+
+  def show
+    @user = User.find_by_id(params[:id])
+    render 'show.json.jbuilder'
   end
 
   def create
@@ -13,7 +23,7 @@ class SessionsController < ApplicationController
     if @user 
       login!(@user)
       flash.now[:success] = ["Successfully logged in as #{@user}"]
-      render :show
+      render 'show.json.jbuilder'
     else
       render json: @user, status: :unprocessable_entity
     end

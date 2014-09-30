@@ -3,13 +3,21 @@ class UsersController < ApplicationController
     render :new
   end
 
+  def show
+    @user = User.find_by_credentials(
+      params[:user][:email],
+      params[:user][:password]
+    )
+    render 'show.json.jbuilder'
+  end
+
   def create
     @user = User.new(user_params)
     
     if @user.save
       login!(@user)
       flash[:success] = ["Successfully created user #{@user}"]
-      redirect_to users_url 
+      render 'show.json.jbuilder'
     else
       flash.now[:errors] = ["Invalid email/password combination"]
       render :new

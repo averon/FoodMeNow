@@ -1,4 +1,5 @@
 FoodMeNow.Views.RestaurantIndex = Backbone.CompositeView.extend({
+  className: 'restaurant-index',
   template: JST['restaurant/pick'],
   render: function () {
     var renderedContent = this.template();

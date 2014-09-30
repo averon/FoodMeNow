@@ -1,28 +1,60 @@
-<label for="credit-card">Credit Card</label>
-<input id="credit-card"
-       class="form-control"
-       name="billing[credit-card]"
-       type="text"
-       value="MasterCard">
+<h2 class="payment-method">
+  Payment Method 
+</h2>
 
-<label for="cc-number">Card Number</label>
-<input id="cc-number"
-       class="form-control"
-       name="billing[cc-number]"
-       type="text"
-       value="5555 5555 5555 5555">
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label class="sr-only" for="credit_card_number">Credit Card</label>
+      <input id="credit_card_number"
+             autocomplete="cc-number"
+             class="form-control field-input input-lg"
+             name="billing[credit_card]"
+             type="text"
+             maxlength="20"
+             pattern="\d*"
+             placeholder="Card Number">
+    </div>
+  </div>
 
-<label for="expiration-date">Expiration Date</label>
-<input id="expiration-date"
-       class="form-control"
-       name="billing[expiration-date]"
-       type="date"
-       value="2016-01-15">
+  <div class="col-md-2">
+    <div class="form-group">
+      <label class="sr-only" for="expiration-date">Expiration Date</label>
+      <input id="expiration-date"
+             autocomplete="cc-exp"
+             class="form-control field-input input-lg"
+             name="billing[expiration-date]"
+             type="text"
+             maxlength="7"
+             pattern="\d*"
+             placeholder="MM/YY">
+    </div>
+  </div>
 
-<label for="billing-zip">Billing Zip Code</label>
-<input id="billing-zip"
-       class="form-control"
-       name="billing[billing-zip]"
-       type="text"
-       value="12345">
-       
+  <div class="col-md-2">
+    <div class="form-group">
+      <label class="sr-only" for="cc-cvc">Expiration Date</label>
+      <input id="cc-cvc"
+             autocomplete="cc-cvc"
+             class="form-control field-input input-lg"
+             name="billing[cvc]"
+             type="text"
+             maxlength="4"
+             pattern="\d*"
+             placeholder="CCV">
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="form-group">
+      <label class="sr-only" for="billing-zip">Billing Zip Code</label>
+      <input id="billing-zip"
+             class="form-control field-input input-lg"
+             name="billing[billing-zip]"
+             type="text"
+             maxlength="5"
+             pattern="\d*"
+             placeholder="ZIP"> 
+    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925163119) do
+ActiveRecord::Schema.define(version: 20140929171145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,21 @@ ActiveRecord::Schema.define(version: 20140925163119) do
   end
 
   add_index "cuisine_tags", ["name"], name: "index_cuisine_tags_on_name", unique: true, using: :btree
+
+  create_table "delivery_addresses", force: true do |t|
+    t.string   "full_name",                       null: false
+    t.string   "street_address",                  null: false
+    t.string   "city",                            null: false
+    t.string   "state",                           null: false
+    t.string   "postal_code",                     null: false
+    t.string   "tel"
+    t.integer  "user_id",                         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "current_address", default: false
+  end
+
+  add_index "delivery_addresses", ["user_id"], name: "index_delivery_addresses_on_user_id", using: :btree
 
   create_table "menu_categories", force: true do |t|
     t.string   "name",          null: false
@@ -68,6 +83,18 @@ ActiveRecord::Schema.define(version: 20140925163119) do
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "payment_methods", force: true do |t|
+    t.string   "card_number", null: false
+    t.string   "exp_date",    null: false
+    t.string   "cvv",         null: false
+    t.string   "zip",         null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payment_methods", ["user_id"], name: "index_payment_methods_on_user_id", using: :btree
 
   create_table "restaurants", force: true do |t|
     t.string   "name",           null: false

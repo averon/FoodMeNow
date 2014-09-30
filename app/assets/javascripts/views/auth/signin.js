@@ -1,31 +1,46 @@
 FoodMeNow.Views.SignIn = Backbone.View.extend({
-  template: JST['checkout/signin'],
+  template: function () {
+    return this.newUser ? JST['auth/signup'] : JST['auth/signin']
+  },
+  initialize: function () {
+    this.newUser = false;
+  },
   render: function () {
     this.$el.html(this.template());
     return this;
   },
   events: {
     'click .guest-signin': 'fillSigninForm',
-    'click .signin': 'signin'
+    'click .authorize': 'authorize',
+    'click .toggleAuthType': 'toggleAuthType'
   },
-  fillSigninForm: function(event) {
+  toggleAuthType: function (event) {
+    event.preventDefault();
+    this.removeModal();
+    this.newUser = !this.newUser;
+    this.render();
+    $('#checkout').modal('show');
+  },
+  fillSigninForm: function (event) {
     event.preventDefault();
 
     var $parents = $(event.currentTarget).parents();
     $parents.find('#email').val("guest@food-me-now.com");
     $parents.find('#password').val("guest_password");
   },
-  signin: function (event) {
+  authorize: function (event) {
     event.preventDefault();
+    var view = this;
 
     var $form = $(event.currentTarget).parents().find('form');
     var params = $form.serializeJSON();
-    var session = new FoodMeNow.Models.Session(params['user']);
-    session.save({}, {
-      success: function (response, options) {
-        FoodMeNow.currentUser = response.attributes;
-        $('.modal-open').removeClass();
-        $('.modal-backdrop').remove();
+
+    FoodMeNow.currentUser.fetch({
+      url: '/sessions',
+      type: 'POST',
+      data: params['user'],
+      success: function () {
+        view.removeModal();
         Backbone.history.navigate('#/checkout');
         $('.dropdown .btn-group').addClass('open');
       },
@@ -36,4 +51,9 @@ FoodMeNow.Views.SignIn = Backbone.View.extend({
       }
     });
   },
+  removeModal: function () {
+    $('#checkout').modal('hide');
+    $('.modal-open').removeClass();
+    $('.modal-backdrop').remove();
+  }
 });

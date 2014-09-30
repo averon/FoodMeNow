@@ -6,9 +6,7 @@
 <ul class="checkout-info">
   <li class="tax">Tax: $<%= order.escape('tax') %></li>
   <li class="tip">Tip: $<%= order.escape('tip') %></li>
-  <li class="price">Total: $<%= order.escape('price') %></li>
 </ul>
 
-<div class="checkout">
-</div>
-
+<h3 class="total">Total: $<%= order.escape('price') %></h3>
+  

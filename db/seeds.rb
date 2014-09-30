@@ -48,7 +48,7 @@ cuisine_tags = CuisineTag.create([
 cuisine_taggings = CuisineTagging.create([
   { restaurant_id: 1, cuisine_tag_id: 4},
   { restaurant_id: 2, cuisine_tag_id: 3},
-  { restaurant_id: 2, cuisine_tag_id: 2}
+  { restaurant_id: 3, cuisine_tag_id: 2}
 ])
 
 menu_categories = MenuCategory.create([
@@ -82,3 +82,21 @@ menu_items = MenuItem.create([
   { name: "Chocolate Cake", price: 3, menu_category_id: 8 },
   { name: "Cheesecake", price: 3, menu_category_id: 8 }
 ])
+
+delivery_address = DeliveryAddress.create(
+  full_name: 'Honorable Guest',
+  street_address: '123 Paradiso St',
+  city: 'San Francisco',
+  state: 'CA',
+  postal_code: '94117',
+  tel: '555-555-5555',
+  user_id: 1
+)
+
+payment_method = PaymentMethod.create(
+  card_number: '5555-5555-5555-5555',
+  exp_date: '09/2016',
+  cvv: '347',
+  zip: '94110',
+  user_id: 1
+)

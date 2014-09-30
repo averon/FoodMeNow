@@ -8,7 +8,9 @@ window.FoodMeNow = {
       $rootEl: $('#main'),
     });
     Backbone.history.start();
-    FoodMeNow.createNavbar()
+    FoodMeNow.defineGlobals();
+    FoodMeNow.createNavbar();
+    FoodMeNow.addModal();
   },
   createNavbar: function () {
     currentOrder = new FoodMeNow.Models.Order();
@@ -19,6 +21,13 @@ window.FoodMeNow = {
       model: currentCart 
     });
     $('#fmn-navbar').html(navbar.render().$el);
+  },
+  addModal: function () {
+    var signInModal = new FoodMeNow.Views.SignIn();
+    $('#signin-modal').html(signInModal.render().$el);
+  },
+  defineGlobals: function () {
+    FoodMeNow.currentUser = new FoodMeNow.Models.User();
   }
 }
 
@@ -28,7 +37,7 @@ $(document).ready(function () {
 
 Backbone.CompositeView = Backbone.View.extend({
   addSubview: function (selector, view) {
-    this.subviews(selector).push(view);
+    this.subviews(selector).unshift(view);
   },
   remove: function () {
     Backbone.View.prototype.remove.call(this);
