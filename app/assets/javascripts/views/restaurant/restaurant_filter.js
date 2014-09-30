@@ -21,20 +21,14 @@ FoodMeNow.Views.RestaurantFilter = Backbone.View.extend({
     });
   },
   triggerFilter: function (event) {
-    var $checkbox, $checked, cuisineName, cuisine;
+    var $checkbox, $checked, cuisineNames;
     $checkbox = $(event.currentTarget).find('input');
     $checkbox.prop("checked", !$checkbox.prop("checked"));
 
     $checked = this.$('input:checked');
-    this.filter($checked);
-  },
-  filter: function (checked) {
-    var view = this;
-    checked.each(function (idx, el) {
-      var cuisineName = $(el).attr('name');
-      cuisine = view.collection.findWhere({ name: cuisineName });
+    cuisineNames = $.map($checked, function (cuisine) {
+      return cuisine.getAttribute('name');
     });
-
-    debugger;
+    this.trigger('filterRestaurants', cuisineNames);
   }
 });

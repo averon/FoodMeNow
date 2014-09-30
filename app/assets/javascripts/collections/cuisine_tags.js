@@ -4,3 +4,4 @@ FoodMeNow.Collections.CuisineTags = Backbone.Collection.extend({
 });
 
 FoodMeNow.Collections.cuisineTags = new FoodMeNow.Collections.CuisineTags();
+FoodMeNow.Collections.cuisineTags.fetch();

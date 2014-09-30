@@ -9,12 +9,10 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
     'confirmation': 'confirmation'
   },
   restaurantIndex: function () {
-    var restaurants = FoodMeNow.Collections.restaurants;
-    var cuisines = FoodMeNow.Collections.cuisineTags;
+    var cuisines = FoodMeNow.Collections.cuisineTags.clone();
     var restaurantIndex = new FoodMeNow.Views.RestaurantIndex();
+    FoodMeNow.Collections.restaurants.fetch();
 
-    restaurants.fetch();
-    cuisines.fetch();
     this.swapView(restaurantIndex);
   },
   menuShow: function (id) {

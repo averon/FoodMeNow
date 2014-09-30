@@ -15,8 +15,20 @@ FoodMeNow.Collections.Restaurants = Backbone.Collection.extend({
       });
     }
     return restaurant;
-  }
+  },
+
+  filters: {
+    cuisines: []
+  },
+
+  filtered: function () {
+    this.reset([]);
+    this.fetch({
+      data: this.filters
+    });
+    return this;
+  },
+
 });
 
 FoodMeNow.Collections.restaurants = new FoodMeNow.Collections.Restaurants();
-
