@@ -26,6 +26,11 @@ window.FoodMeNow = {
     var signInModal = new FoodMeNow.Views.SignIn();
     $('#signin-modal').html(signInModal.render().$el);
   },
+  removeModal: function (selector) {
+    $(selector).modal('hide');
+    $('.modal-open').removeClass();
+    $('.modal-backdrop').remove();
+  },
   defineGlobals: function () {
     FoodMeNow.currentUser = new FoodMeNow.Models.User();
   }
@@ -52,10 +57,10 @@ Backbone.CompositeView = Backbone.View.extend({
     subviews.splice(subviews.indexOf(subview), 1);
   },
   removeAllSubviews: function (selector) {
-    this.subviews('.restaurants').forEach(function (subview) {
+    this.subviews(selector).forEach(function (subview) {
       subview.remove();
     });
-    this.subviews()['.restaurants'] = [];
+    this.subviews()[selector] = [];
   },
   attachSubviews: function () {
     var view = this;

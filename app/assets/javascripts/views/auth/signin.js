@@ -16,7 +16,7 @@ FoodMeNow.Views.SignIn = Backbone.View.extend({
   },
   toggleAuthType: function (event) {
     event.preventDefault();
-    this.removeModal();
+    FoodMeNow.removeModal('#checkout');
     this.newUser = !this.newUser;
     this.render();
     $('#checkout').modal('show');
@@ -40,7 +40,7 @@ FoodMeNow.Views.SignIn = Backbone.View.extend({
       type: 'POST',
       data: params['user'],
       success: function () {
-        view.removeModal();
+        FoodMeNow.removeModal('#checkout');
         Backbone.history.navigate('#/checkout');
         $('.dropdown .btn-group').addClass('open');
       },
@@ -50,10 +50,5 @@ FoodMeNow.Views.SignIn = Backbone.View.extend({
         $alert.html('Invalid email/password combination');
       }
     });
-  },
-  removeModal: function () {
-    $('#checkout').modal('hide');
-    $('.modal-open').removeClass();
-    $('.modal-backdrop').remove();
   }
 });

@@ -10,9 +10,20 @@ FoodMeNow.Views.MenuShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.menuCategories(), 'add', this.addMenuCategory);
+
+    PubSub.subscribe('launchItemModal', this.launchItemModal.bind(this));
   },
   addMenuCategory: function (category) {
     var categoryShow = new FoodMeNow.Views.MenuCategoryShow({ model: category });
     this.addSubview('.menu', categoryShow.render());
+  },
+  launchItemModal: function (channel, item) {
+    this.removeAllSubviews('.item-details');
+
+    var itemDetailModal = new FoodMeNow.Views.ItemDetail({ model: item });
+    this.addSubview('.item-details', itemDetailModal.render());
+
+    this.attachSubviews();
+    this.$('.item-detail-modal').modal('show');
   }
 });
