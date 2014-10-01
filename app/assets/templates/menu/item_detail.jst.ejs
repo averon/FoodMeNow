@@ -1,38 +1,42 @@
 <div class="modal fade item-detail-modal" tabIndex="-1">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
-       <div class="modal-header">
-         <h3 class="modal-title">Food Item</h3>
-         <p class="modal-description">Description goes here. Lorem ipsum...</p>
-       </div>
-       <form>
-         <div class="modal-body">
-           <div class="form-group">
-             <label for="item-special-instructions">Special Item Instructions</label>
-             <textarea id="item-special-instructions"
-                    class="form-control"
-                    name="item[special_instructions]"
-                    placeholder="Ex. 'No Mayo! - Please write concisely and clearly!' (Any resulting price adjustments will be added by the restaurant after checkout.)">
-             </textarea>
-           </div>
-         </div>
-         <div class="modal-footer">
-           <div id="quantity-label></div>
-           <div class="btn-group btn-default dropdown-toggle"
-                data-toggle="dropdown"
-                data-id="cart-item-quantity">
-             <span class="filter-option"></span>
-             <span class="caret"></span>
-           </div>
-           <div id="offer-show-price">
-             <span id="offer-base"></span>
-           </div>
-           <input class="submit-item btn btn-lg btn-primary"
-                  style="width: 100%"
-                  type="submit"
-                  value="Add to Cart">
-         </div>
-       </form> 
+      <div class="row">
+        <div class="col-md-12">
+          <div class="modal-header">
+            <h3 class="modal-title">Food Item</h3>
+            <p class="modal-description">Description goes here. Lorem ipsum...</p>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="item-special-instructions">Special Item Instructions</label>
+                <textarea id="item-special-instructions"
+                       class="form-control"
+                       name="item[special_instructions]"
+                       placeholder="Ex. 'No Mayo! - Please write concisely and clearly!' (Any resulting price adjustments will be added by the restaurant after checkout.)"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div id="quantity-label" class="pull-left">Quantity:</div>
+              <select class="quantity selectpicker pull-left">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <div id="offer-show-price pull-right">
+                <span id="offer-base">$<%= item.escape('price') %>.00 Each</span>
+              </div>
+              <input class="submit-item btn btn-lg btn-primary"
+                     style="width: 100%"
+                     type="submit"
+                     value="Add to Cart">
+            </div>
+          </form> 
+        </div>
+      </div>
     </div>
   </div>
 </div>

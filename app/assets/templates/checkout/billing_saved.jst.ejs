@@ -1,0 +1,19 @@
+<h2>Delivery Information</h2>
+
+<div class="checkout-option saved-billing">
+  <div class="radio-inline">
+    <input checked="checked" class="checkout_option-radio" type="radio">
+    <div class="checkout_option-label">
+      <p>
+        MasterCard ending in
+        <%= payment_method.escape('card_number').substr(payment_method.escape('card_number').length - 4) %>
+      </p>
+   </div>
+  </div>
+</div>
+
+<div class="checkout-option new-payment-method">
+  <div class="radio-inline">
+  <input class="checkout_option-radio" type="radio">
+  <span class="checkout_option-label">Enter a different payment method</span>
+</div>

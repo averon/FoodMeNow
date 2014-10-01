@@ -4,16 +4,13 @@ FoodMeNow.Views.MenuItem = Backbone.CompositeView.extend({
   render: function () {
     var renderedContent = this.template({ item: this.model });
     this.$el.html(renderedContent);
-    this.attachSubviews();
     return this;
   },
   events: {
     'click': 'launchItemDetail'
   },
   launchItemDetail: function () {
+    debugger;
     PubSub.publish('launchItemModal', this.model);
-  },
-  addToCart: function () {
-    PubSub.publish('order', this.model);
   }
 });

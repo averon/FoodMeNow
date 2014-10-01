@@ -17,6 +17,7 @@ FoodMeNow.Views.Checkout = Backbone.CompositeView.extend({
   events: {
     'click .place-order': 'placeOrder',
     'click .new-delivery-address': 'newDeliveryView',
+    'click .new-payment-method': 'newBillingView'
   },
   placeOrder: function () {
     Backbone.history.navigate('#/confirmation')
@@ -38,27 +39,29 @@ FoodMeNow.Views.Checkout = Backbone.CompositeView.extend({
       this.removeSubview('.delivery-details', currentViews[0]);
     }
 
-    var newDeliveryView = new FoodMeNow.Views.DeliveryNew();
+    var currentAddress = FoodMeNow.currentUser.currentAddress();
+    var newDeliveryView = new FoodMeNow.Views.DeliveryNew({ model: currentAddress });
     this.addSubview('.delivery-details', newDeliveryView.render());
     this.render();
   },
   currentBillingView: function () {
     var currentBilling = FoodMeNow.currentUser.currentBilling();
     if (currentBilling) {
-      var billing = new FoodMeNow.Views.Billing({
+      var billing = new FoodMeNow.Views.BillingSaved({
         model: currentBilling
       });
       this.addSubview('.billing-information', billing.render());
     }
   },
   newBillingView: function () {
+    debugger;
     var currentViews = this.subviews('.billing-information');
     if (currentViews.length > 0) {
       this.removeSubview('.billing-information', currentViews[0]);
     }
 
     var currentBilling = FoodMeNow.currentUser.currentBilling();
-    var newBillingView = new FoodMeNow.Views.Billing({
+    var newBillingView = new FoodMeNow.Views.BillingNew({
       model: currentBilling
     });
     this.addSubview('.billing-information', newBillingView.render());
