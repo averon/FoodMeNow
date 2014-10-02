@@ -3,26 +3,28 @@
 }
 
 #main {
-  margin-top: 52px;
+  margin-top: 50px;
 }
 
 #item-special-instructions {
   resize: vertical;
 }
 
+.restaurant-index-header {
+  min-height: 550px;
+  background-image: url('san_francisco.jpg');
+  background-size: cover;
+}
+
 .thumbnail {
   float: left;
-}
-
-.thumbnail img {
   width: 150px;
   height: 100px;
-  background: blue;
-  margin-right: 10px;
+  margin-bottom: 0;
 }
 
-.restaurant-data {
-  float: left;
+.restaurant-item {
+  padding-top: 20px;
 }
 
 .restaurant-title h2 {
@@ -31,27 +33,13 @@
 
 .restaurants li {
   list-style-type: none;
-  height: 100px;
-  padding: 10px 0;
   border-bottom: 1px solid black;
-  float: left;
 }
-
-/*
-.restaurants li:last-child {
-  border: none;
-}
-*/
 
 .restaurant-filter {
-  width: 300px;
-  height: 600px;
-  float: left;
   background: ivory;
   border: 1px solid black;
   border-radius: 5px;
-  margin: 0 10px 0 0;
-  padding: 10px;
 }
 
 .restaurant-filter li {
@@ -76,17 +64,16 @@
 
 .menu-item {
   float: left;
-  margin: 0 10px 20px 0;
+  margin: 0 20px 20px 0;
 }
 
 .menu-item:hover {
-  background: green;
+  background: lightblue;
 }
 
 .menu-item img {
-  width: 200px;
-  height: 100px;
-  background: blue;
+  width: 240px;
+  height: 160px;
 }
 
 .menu-item li {

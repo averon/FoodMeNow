@@ -10,7 +10,6 @@ FoodMeNow.Views.MenuItem = Backbone.CompositeView.extend({
     'click': 'launchItemDetail'
   },
   launchItemDetail: function () {
-    debugger;
     PubSub.publish('launchItemModal', this.model);
   }
 });

@@ -11,7 +11,7 @@ FoodMeNow.Views.OrderShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, 'sync change', this.render);
 
-    PubSub.subscribe('order', this.addItem.bind(this));
+    this.orderChannel = PubSub.subscribe('order', this.addItem.bind(this));
 
     var view = this;
     this.model.orderItems().each(function (item) {

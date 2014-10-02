@@ -4,6 +4,7 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
   },
   routes: {
     '': 'restaurantIndex',
+    'san_francisco': 'restaurantIndex',
     'restaurants/:id': 'menuShow',
     'checkout': 'checkout',
     'confirmation': 'confirmation'
@@ -14,6 +15,7 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
     FoodMeNow.Collections.restaurants.fetch();
 
     this.swapView(restaurantIndex);
+    Backbone.history.navigate('#/san_francisco');
   },
   menuShow: function (id) {
     var restaurant = FoodMeNow.Collections.restaurants.getOrFetch(id);

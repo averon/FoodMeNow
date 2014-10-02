@@ -54,7 +54,6 @@ FoodMeNow.Views.Checkout = Backbone.CompositeView.extend({
     }
   },
   newBillingView: function () {
-    debugger;
     var currentViews = this.subviews('.billing-information');
     if (currentViews.length > 0) {
       this.removeSubview('.billing-information', currentViews[0]);

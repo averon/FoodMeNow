@@ -1,4 +1,4 @@
-<li class="item-image"><img></li>
+<li class="item-image"><img src="assets/<%= item.escape('img_path') %>"></li>
 <li class="item-name"><%= item.escape('name') %></li>
 <li class="item-price">$<%= parseInt(item.escape('price')).toFixed(2) %></li>
 

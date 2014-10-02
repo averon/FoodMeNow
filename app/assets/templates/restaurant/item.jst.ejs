@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <img src="assets/<%= restaurant.escape('img_path') %>">
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="restaurant-data">
+      <div class="restaurant-title">
+        <h2><a href="#/restaurants/<%= restaurant.id %>"><%= restaurant.escape('name') %></a></h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="restaurant-details-primary">
+            <div class="street-address"><%= restaurant.escape('street_address') %></div>
+            <div class="cross-streets">(<%= restaurant.escape('cross_streets') %>)</div>
+            <div class="street-address-secondary">
+              <span class="city"><%= restaurant.escape('city') %></span>
+              <span class="state"><%= restaurant.escape('state') %></span>
+              <span class="zip"><%= restaurant.escape('zip') %></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="restaurant-details-secondary pull-right">
+            <div class="telephone"><%= restaurant.escape('telephone') %></div>
+            <div class="rating"></div>
+            <div class="price"></div>
+          </div>
+       </div>
+    </div>
+  </div>
+</div>

@@ -13,9 +13,8 @@ window.FoodMeNow = {
     FoodMeNow.addModal();
   },
   createNavbar: function () {
-    currentOrder = new FoodMeNow.Models.Order();
-    currentCart = new FoodMeNow.Views.OrderShow({
-      model: currentOrder
+    var currentCart = new FoodMeNow.Views.OrderShow({
+      model: FoodMeNow.currentOrder
     });
     navbar = new FoodMeNow.Views.Navbar({
       model: currentCart 
@@ -33,6 +32,7 @@ window.FoodMeNow = {
   },
   defineGlobals: function () {
     FoodMeNow.currentUser = new FoodMeNow.Models.User();
+    FoodMeNow.currentOrder = new FoodMeNow.Models.Order();
   }
 }
 

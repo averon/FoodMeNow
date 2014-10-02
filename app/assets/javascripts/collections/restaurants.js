@@ -18,7 +18,9 @@ FoodMeNow.Collections.Restaurants = Backbone.Collection.extend({
   },
 
   filters: {
-    cuisines: []
+    cuisines: [],
+    ratings: [],
+    prices: []
   },
 
   filtered: function () {

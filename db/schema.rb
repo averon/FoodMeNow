@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930053513) do
+ActiveRecord::Schema.define(version: 20141002064137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140930053513) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "img_path"
   end
 
   add_index "menu_items", ["menu_category_id"], name: "index_menu_items_on_menu_category_id", using: :btree
@@ -98,14 +99,18 @@ ActiveRecord::Schema.define(version: 20140930053513) do
   add_index "payment_methods", ["user_id"], name: "index_payment_methods_on_user_id", using: :btree
 
   create_table "restaurants", force: true do |t|
-    t.string   "name",           null: false
-    t.string   "street_address", null: false
-    t.string   "city",           null: false
-    t.string   "state",          null: false
-    t.integer  "zip",            null: false
-    t.string   "telephone",      null: false
+    t.string   "name",                       null: false
+    t.string   "street_address",             null: false
+    t.string   "city",                       null: false
+    t.string   "state",                      null: false
+    t.integer  "zip",                        null: false
+    t.string   "telephone",                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rating",         default: 0
+    t.integer  "price",          default: 0
+    t.string   "cross_streets"
+    t.string   "img_path"
   end
 
   add_index "restaurants", ["name"], name: "index_restaurants_on_name", using: :btree

@@ -1,6 +1,6 @@
 FoodMeNow.Views.MenuShow = Backbone.CompositeView.extend({
   className: 'restaurant-menu',
-  template: JST['restaurant/menu'],
+  template: JST['menu/show'],
   render: function () {
     var renderedContent = this.template({ restaurant: this.model });
     this.$el.html(renderedContent);
@@ -11,7 +11,11 @@ FoodMeNow.Views.MenuShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.menuCategories(), 'add', this.addMenuCategory);
 
-    PubSub.subscribe('launchItemModal', this.launchItemModal.bind(this));
+    this.itemModalChannel = PubSub.subscribe('launchItemModal', this.launchItemModal.bind(this));
+  },
+  remove: function() {
+    PubSub.unsubscribe(this.itemModalChannel);
+    Backbone.View.prototype.remove.call(this);
   },
   addMenuCategory: function (category) {
     var categoryShow = new FoodMeNow.Views.MenuCategoryShow({ model: category });
@@ -25,5 +29,5 @@ FoodMeNow.Views.MenuShow = Backbone.CompositeView.extend({
 
     this.attachSubviews();
     this.$('.item-detail-modal').modal('show');
-  }
+  },
 });

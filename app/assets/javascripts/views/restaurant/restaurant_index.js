@@ -1,6 +1,6 @@
 FoodMeNow.Views.RestaurantIndex = Backbone.CompositeView.extend({
   className: 'restaurant-index',
-  template: JST['restaurant/pick'],
+  template: JST['restaurant/index'],
   render: function () {
     var renderedContent = this.template();
     this.$el.html(renderedContent);
@@ -27,11 +27,14 @@ FoodMeNow.Views.RestaurantIndex = Backbone.CompositeView.extend({
     var restaurantItem = new FoodMeNow.Views.RestaurantItem({ model: restaurant });
     this.addSubview('.restaurants', restaurantItem.render());
   },
-  filterRestaurants: function (cuisineNames) {
+  filterRestaurants: function (options) {
     var view = this;
     this.removeAllSubviews('.restaurants');
 
-    this.restaurants.filters.cuisines = cuisineNames;
+    this.restaurants.filters.cuisines = options.cuisines;
+    this.restaurants.filters.ratings = options.ratings;
+    this.restaurants.filters.prices = options.prices;
+
     this.restaurants.filtered().each(function (restaurant) {
       view.addRestaurantItem(restaurant);
     });

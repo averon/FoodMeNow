@@ -1,7 +1,9 @@
 module Api
   class RestaurantsController < ApiController 
     def index
-      @restaurants = parse_cuisines 
+      @restaurants = parse_cuisines
+      @restaurants.merge!(parse_prices)
+      @restaurants.merge!(parse_ratings)
       render :index
     end
 
@@ -15,12 +17,23 @@ module Api
     def parse_cuisines
       return Restaurant.all unless params[:cuisines]
 
-      cuisine_tags = params[:cuisines].split(',')
-      cuisines = CuisineTag.where(name: cuisine_tags)
+      Restaurant
+        .includes(:cuisine_tags)
+        .where(
+          cuisine_tags: {
+            name: params[:cuisines]
+          }
+        )
+    end
 
-      restaurants = cuisines.map do |cuisine|
-        cuisine.restaurants
-      end.flatten!
+    def parse_prices
+      return @restaurants unless params[:prices]
+      Restaurant.where(price: params[:prices])
+    end
+
+    def parse_ratings
+      return @restaurants unless params[:ratings]
+      Restaurant.where(rating: params[:ratings])
     end
   end
 end
