@@ -20,7 +20,11 @@ FoodMeNow.Views.Checkout = Backbone.CompositeView.extend({
     'click .new-payment-method': 'newBillingView'
   },
   placeOrder: function () {
-    Backbone.history.navigate('#/confirmation');
+    if (FoodMeNow.currentOrder.isEmpty()) {
+      $('#fmn-alerts').html('<div class="alert alert-danger">Please add items to cart to checkout!</div>');
+    } else {
+      Backbone.history.navigate('#/confirmation');
+    }
   },
   currentDeliveryView: function () {
     var currentDeliveryAddress = FoodMeNow.currentUser.currentAddress();

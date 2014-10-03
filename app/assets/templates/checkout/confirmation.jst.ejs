@@ -1,1 +1,13 @@
-<h3>Thank you for your order!</h3>
+<div class="container">
+  <div class="row">
+    <h3>Thank you for your order!</h3>
+
+    <p>Your order was sent to the kitchen on <%= new Date() %>.</p>
+    <p>Confirmation email sent to <%= FoodMeNow.currentUser.escape('email') %>.</p>
+  </div>
+
+  <div class="row">
+    <h4>Your food is on the way!</h4>
+    <p>And will arrive in 45-60 minutes.</p>
+  </div>
+</div>

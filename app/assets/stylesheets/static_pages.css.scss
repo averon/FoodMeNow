@@ -2,14 +2,17 @@
   margin-bottom: 0;
 }
 
-#main {
-  margin-top: 60px;
-}
-
 #item-special-instructions {
   resize: vertical;
 }
 
+#fmn-alerts .alert {
+  margin-bottom: 0;
+}
+
+.content {
+  margin-top: 60px;
+}
 .navbar-header img {
   height: 50px;
 }
@@ -21,7 +24,7 @@
 }
 
 .restaurant-index-header h1 {
-  margin-bottom: 0.2em;
+  margin-bottom: 2em;
 }
 .restaurant-index-header h2 {
   margin-top: 0;
@@ -44,7 +47,7 @@
 }
 
 .restaurant-name img {
-  height: 200px;
+  height: 125px;
 }
 
 .restaurant-item {
@@ -182,6 +185,10 @@
   margin: 0 15px 0 15px;
 }
 
-.modal-header .alert {
+.submit-item {
+  margin-top: 10px;
+}
+
+.header .alert {
   margin: 0;
 }

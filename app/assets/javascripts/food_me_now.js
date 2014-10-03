@@ -5,7 +5,7 @@ window.FoodMeNow = {
   Routers: {},
   initialize: function () { 
     FoodMeNow.defineGlobals();
-    new FoodMeNow.Routers.FoodMeNowRouter({
+    this.router = new FoodMeNow.Routers.FoodMeNowRouter({
       $rootEl: $('#main'),
     });
     Backbone.history.start();

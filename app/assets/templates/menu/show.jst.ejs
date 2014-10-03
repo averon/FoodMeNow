@@ -2,7 +2,16 @@
   <div class="col-md-9">
     <div class="restaurant-name">
       <img src="assets/<%= restaurant.escape('img_path') %>header.jpg">
-    </div>
+      <div class="street-address">
+        <%= restaurant.escape('street_address') %>
+        (<%= restaurant.escape('cross_streets') %>)
+      </div>
+      <div class="street-address-secondary">
+        <%= restaurant.escape('city') %>
+        <%= restaurant.escape('state') %>
+        <%= restaurant.escape('zip') %>
+      </div>
+     </div>
 
     <div class="menu">
     </div>

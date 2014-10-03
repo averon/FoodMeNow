@@ -4,10 +4,15 @@ FoodMeNow.Views.Navbar = Backbone.CompositeView.extend({
   render: function () {
     this.$el.html(this.template({ order: this.model.model }));
     this.attachSubviews();
+    if (!FoodMeNow.currentOrder.isNew()) {
+      this.$('.btn-group').addClass('open');
+    }
     return this;
   },
   initialize: function () {
     this.listenTo(FoodMeNow.currentUser, 'change', this.render);
+    this.listenTo(FoodMeNow.currentOrder.orderItems(), 'add change', this.render);
+    this.listenTo(FoodMeNow.router, 'route', this.hideCart);
     this.addSubview('.order-cart', this.model.render());
     this.closable = false;
   },
@@ -24,5 +29,12 @@ FoodMeNow.Views.Navbar = Backbone.CompositeView.extend({
   signOut: function (event) {
     event.preventDefault();
     FoodMeNow.currentUser.clear();
+  },
+  hideCart: function (route) {
+    if (route === 'confirmation') {
+      this.$('.dropdown').hide();
+    } else {
+      this.$('.dropdown').show();
+    }
   }
 });

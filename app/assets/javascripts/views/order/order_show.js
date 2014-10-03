@@ -17,7 +17,6 @@ FoodMeNow.Views.OrderShow = Backbone.CompositeView.extend({
     this.model.orderItems().each(function (item) {
       this.newItem(item);
     });
-
   },
   addItem: function (channel, item) {
     var newOrderItem = this.model.addItem(item);
@@ -46,5 +45,5 @@ FoodMeNow.Views.OrderShow = Backbone.CompositeView.extend({
     } else {
       $('.btn-group').removeClass('open');
     }
- },
+ }
 });
