@@ -10,7 +10,7 @@ FoodMeNow.Views.SignIn = Backbone.View.extend({
     return this;
   },
   events: {
-    'click .guest-signin': 'fillSigninForm',
+    'click .guest-signin': 'guestSignIn',
     'click .authorize': 'authorize',
     'click .toggleAuthType': 'toggleAuthType',
     'hidden.bs.modal #checkout': 'removeAlert'
@@ -22,7 +22,7 @@ FoodMeNow.Views.SignIn = Backbone.View.extend({
     this.render();
     $('#checkout').modal('show');
   },
-  fillSigninForm: function (event) {
+  guestSignIn: function (event) {
     event.preventDefault();
 
     var $parents = $(event.currentTarget).parents();
