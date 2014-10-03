@@ -120,6 +120,12 @@ menu_categories = MenuCategory.create([
   { name: 'Savory Crepes', restaurant_id: 3, ord: 5 },
   { name: 'Sweet Crepes', restaurant_id: 3, ord: 6 },
   { name: 'Waffles', restaurant_id: 3, ord: 7 },
+
+  { name: 'Appetizers', restaurant_id: 4, ord: 1 },
+  { name: 'Sashimi', restaurant_id: 4, ord: 2 },
+  { name: 'Nigiri', restaurant_id: 4, ord: 3 },
+  { name: 'Sushi', restaurant_id: 4, ord: 4 },
+  { name: 'Udon', restaurant_id: 4, ord: 5 },
 ])
 
 menu_items = MenuItem.create([
@@ -190,6 +196,22 @@ menu_items = MenuItem.create([
   { name: "Van Gough", price: 10, menu_category_id: 20, img_path: 'frjtz/menu/van_gough.jpg', description: "Butter, lemon juice and sugar" },
   { name: "Petillon", price: 10, menu_category_id: 21, img_path: 'frjtz/menu/petillon.jpg', description: "2 poached eggs, bacon and hollandaise" },
   { name: "Tromberg", price: 10, menu_category_id: 21, img_path: 'frjtz/menu/tromberg.jpg', description: "Date butter and syrup" },
+  { name: "Gyoza", price: 5, menu_category_id: 22, img_path: 'kaka_udon_kitchen/menu/gyoza.jpg', },
+  { name: "Seaweed Salad", price: 4, menu_category_id: 22, img_path: 'kaka_udon_kitchen/menu/seaweed_salad.jpg', },
+  { name: "Miso Soup", price: 3, menu_category_id: 22, img_path: 'kaka_udon_kitchen/menu/miso_soup.jpg', },
+  { name: "Tuna Sashimi", price: 7, menu_category_id: 23, img_path: 'kaka_udon_kitchen/menu/tuna_sashimi.jpg', },
+  { name: "Salmon Sashimi", price: 7, menu_category_id: 23, img_path: 'kaka_udon_kitchen/menu/salmon_sashimi.jpg', },
+  { name: "Uni Sashimi", price: 7, menu_category_id: 23, img_path: 'kaka_udon_kitchen/menu/uni_sashimi.jpeg', },
+  { name: "Tuna Nigiri", price: 4, menu_category_id: 24, img_path: 'kaka_udon_kitchen/menu/tuna_nigiri.jpg', },
+  { name: "Salmon Nigiri", price: 4, menu_category_id: 24, img_path: 'kaka_udon_kitchen/menu/salmon_nigiri.jpg', },
+  { name: "Avocado Roll", price: 3, menu_category_id: 25, img_path: 'kaka_udon_kitchen/menu/avocado_roll.jpg', },
+  { name: "California Roll", price: 4, menu_category_id: 25, img_path: 'kaka_udon_kitchen/menu/california_roll.jpg', },
+  { name: "Spicy Tuna Roll", price: 4, menu_category_id: 25, img_path: 'kaka_udon_kitchen/menu/spicy_tuna_roll.jpeg', },
+  { name: "Rock 'n Roll", price: 4, menu_category_id: 25, img_path: 'kaka_udon_kitchen/menu/rock_n_roll.jpg', },
+  { name: "Philadelphia Roll", price: 5, menu_category_id: 25, img_path: 'kaka_udon_kitchen/menu/philadelphia_roll.jpg', },
+  { name: "Beef Specialty Udon", price: 9, menu_category_id: 26, img_path: 'kaka_udon_kitchen/menu/beef_specialty_udon.jpg', },
+  { name: "Grilled Eel Specialty Udon", price: 9, menu_category_id: 26, img_path: 'kaka_udon_kitchen/menu/grilled_eel_specialty_udon.jpg', },
+  { name: "Seafood Specialty Udon", price: 10, menu_category_id: 26, img_path: 'kaka_udon_kitchen/menu/seafood_specialty_udon.jpg', },
 ])
 
 delivery_address = DeliveryAddress.create(
