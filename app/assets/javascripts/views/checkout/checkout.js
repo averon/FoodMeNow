@@ -20,7 +20,7 @@ FoodMeNow.Views.Checkout = Backbone.CompositeView.extend({
     'click .new-payment-method': 'newBillingView'
   },
   placeOrder: function () {
-    Backbone.history.navigate('#/confirmation')
+    Backbone.history.navigate('#/confirmation');
   },
   currentDeliveryView: function () {
     var currentDeliveryAddress = FoodMeNow.currentUser.currentAddress();

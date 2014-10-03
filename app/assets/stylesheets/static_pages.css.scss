@@ -106,7 +106,7 @@
 }
 
 .order-item:hover {
-  background: red;
+  background: pink;
 }
 
 .order {
@@ -149,6 +149,7 @@
 .saved-checkout-info {
   border: 1px solid black;
   border-radius: 5px;
+  background: ivory;
 }
 
 .checkout-option {
@@ -163,6 +164,7 @@
 .checkout-option-label p {
   margin-bottom: 0;
 }
+
 
 .item-details .modal-header {
   padding: 0 0 15px 0;
