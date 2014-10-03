@@ -31,7 +31,7 @@ FoodMeNow.Models.Order = Backbone.Model.extend({
     this.calculate();
   },
   calculate: function () {
-    var price, tax, tip, total, preTax = 0;
+    var price, tax, tip, taxAndGratuity, total, preTax = 0;
 
     this.orderItems().each(function (item) {
       price = parseInt(item.escape('price'));
@@ -41,8 +41,10 @@ FoodMeNow.Models.Order = Backbone.Model.extend({
 
     tax = preTax * 0.085;
     tip = (this.isEmpty() ? 0 : 2);
+    taxAndGratuity = tax + tip;
+
     total = preTax + tax + tip; 
-    this.set({ price: total.toFixed(2), tax: tax.toFixed(2), tip: tip.toFixed(2) });
+    this.set({ subtotal: preTax.toFixed(2), taxAndGratuity: taxAndGratuity.toFixed(2), total: total.toFixed(2) });
   },
   isEmpty: function () {
     return this.orderItems().length === 0

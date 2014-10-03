@@ -12,7 +12,8 @@ FoodMeNow.Views.SignIn = Backbone.View.extend({
   events: {
     'click .guest-signin': 'fillSigninForm',
     'click .authorize': 'authorize',
-    'click .toggleAuthType': 'toggleAuthType'
+    'click .toggleAuthType': 'toggleAuthType',
+    'hidden.bs.modal #checkout': 'removeAlert'
   },
   toggleAuthType: function (event) {
     event.preventDefault();
@@ -50,5 +51,10 @@ FoodMeNow.Views.SignIn = Backbone.View.extend({
         $alert.html('Invalid email/password combination');
       }
     });
+  },
+  removeAlert: function (event) {
+    $target = $(event.currentTarget).find('.alert');
+    $target.empty();
+    $target.hide();
   }
 });

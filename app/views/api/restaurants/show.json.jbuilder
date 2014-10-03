@@ -7,5 +7,6 @@ json.menu_categories @restaurant.menu_categories do |mc|
     json.name mi.name
     json.price mi.price
     json.img_path mi.img_path
+    json.description mi.description
   end
 end

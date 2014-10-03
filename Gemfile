@@ -8,6 +8,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-script'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'backbone-on-rails'
+gem 'lol_dba'
+gem 'thin'
 gem 'newrelic_rpm'
 
 gem 'ejs'

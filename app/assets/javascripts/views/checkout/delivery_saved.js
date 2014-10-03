@@ -1,5 +1,5 @@
 FoodMeNow.Views.DeliverySaved = Backbone.View.extend({
-  className: 'saved-delivery-info',
+  className: 'saved-checkout-info',
   template: JST['checkout/delivery_saved'],
   render: function () {
     var renderedContent = this.template({

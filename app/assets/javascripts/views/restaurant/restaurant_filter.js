@@ -10,7 +10,8 @@ FoodMeNow.Views.RestaurantFilter = Backbone.View.extend({
     return this;
   },
   events: {
-    'change input:checkbox': 'triggerFilter'
+    'change input:checkbox': 'triggerFilter',
+    'click .filter-header': 'toggleFilterDropdown'
   },
   renderContent: function () {
     var restaurantFilter = this;
@@ -53,5 +54,21 @@ FoodMeNow.Views.RestaurantFilter = Backbone.View.extend({
     });
 
     return options;
+  },
+  toggleFilterDropdown: function (event) {
+    var $target = $(event.currentTarget);
+    var $header = $target.find('span');
+    var $filterIndex = $target.parent().find('.filter-index');
+    
+    if ($header.hasClass('glyphicon-minus')) {
+      $header.removeClass('glyphicon-minus');
+      $header.addClass('glyphicon-plus'); 
+      $filterIndex.hide()
+
+    } else if ($header.hasClass('glyphicon-plus')) {
+      $header.removeClass('glyphicon-plus');
+      $header.addClass('glyphicon-minus');
+      $filterIndex.show();
+    }
   }
 });

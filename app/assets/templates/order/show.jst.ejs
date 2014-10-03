@@ -3,10 +3,26 @@
 <div class="order-items">
 </div>
 
-<ul class="checkout-info">
-  <li class="tax">Tax: $<%= order.escape('tax') %></li>
-  <li class="tip">Tip: $<%= order.escape('tip') %></li>
-</ul>
+<div class="row checkout-summary">
+  <div class="col-md-8">
+    <div class="checkout-info">Subtotal</div>
+    <div class="checkout-info">Tax and Gratuity</div>
+    <div class="checkout-info">Delivery</div>
+  </div>
+  <div class="col-md-4">
+    <div class="order-subtotal">$<%= order.escape('subtotal') %></div>
+    <div class="order-tax-and-gratuity">$<%= order.escape('taxAndGratuity') %></div>
+    <div class="order-delivery">Free</div>
+  </div>
+</div>
 
-<h3 class="total">Total: $<%= order.escape('price') %></h3>
-  
+<div class="row checkout-total">
+  <div class="col-md-8">
+    <div class="checkout-info"><h3>Total</h3></div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="order-total"><h3>$<%= order.escape('total') %></h3></div>
+  </div>
+</div>
+

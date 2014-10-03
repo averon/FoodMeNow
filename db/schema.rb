@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141002064137) do
+ActiveRecord::Schema.define(version: 20141002184117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20141002064137) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "img_path"
+    t.text     "description"
   end
 
   add_index "menu_items", ["menu_category_id"], name: "index_menu_items_on_menu_category_id", using: :btree

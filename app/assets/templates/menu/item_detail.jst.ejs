@@ -6,7 +6,7 @@
           <div class="modal-header">
             <img src="assets/<%= item.escape('img_path') %>" style="width: 100%">
             <h3 class="modal-title"><%= item.escape('name') %></h3>
-            <p class="modal-description">Description goes here. Lorem ipsum...</p>
+            <p class="modal-description"><%= item.escape('description') %></p>
           </div>
           <form>
             <div class="modal-body">
@@ -20,7 +20,7 @@
             </div>
             <div class="modal-footer">
               <div id="quantity-label" class="pull-left">Quantity:</div>
-              <select class="quantity selectpicker pull-left">
+              <select class="quantity pull-left">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>

@@ -3,7 +3,7 @@
 }
 
 #main {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 #item-special-instructions {
@@ -11,9 +11,25 @@
 }
 
 .restaurant-index-header {
-  min-height: 550px;
+  min-height: 250px;
   background-image: url('san_francisco.jpg');
   background-size: cover;
+}
+
+.restaurant-index-header h1 {
+  margin-bottom: 0.2em;
+}
+.restaurant-index-header h2 {
+  margin-top: 0;
+}
+
+.restaurant-index-header strong {
+  color: white;
+  letter-spacing: -0.1em;
+}
+
+.restaurant-details-secondary {
+  text-align: right;
 }
 
 .thumbnail {
@@ -21,6 +37,10 @@
   width: 150px;
   height: 100px;
   margin-bottom: 0;
+}
+
+.restaurant-name img {
+  height: 200px;
 }
 
 .restaurant-item {
@@ -34,12 +54,6 @@
 .restaurants li {
   list-style-type: none;
   border-bottom: 1px solid black;
-}
-
-.restaurant-filter {
-  background: ivory;
-  border: 1px solid black;
-  border-radius: 5px;
 }
 
 .restaurant-filter li {
@@ -116,7 +130,6 @@
 }
 
 .checkout-info {
-  margin-top: 18px;
 }
 
 .checkout-actions {
@@ -125,4 +138,44 @@
   padding-top: 27px;
 }
 
+.checkout-summary {
+  padding: 20px 0;
+}
 
+.checkout-total {
+  border-top: 1px solid black;
+}
+
+.saved-checkout-info {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.checkout-option {
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+.checkout-option:last-child {
+  border-bottom: 0;
+}
+
+.checkout-option-label p {
+  margin-bottom: 0;
+}
+
+.item-details .modal-header {
+  padding: 0 0 15px 0;
+}
+
+.item-details .modal-title {
+  margin: 15px 15px 0 15px;
+}
+
+.item-details .modal-description {
+  margin: 0 15px 0 15px;
+}
+
+.modal-header .alert {
+  margin: 0;
+}

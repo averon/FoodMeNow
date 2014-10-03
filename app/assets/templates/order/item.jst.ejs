@@ -1,3 +1,9 @@
-<li class="num-orders">Items: <%= item.escape('numOrders') %></li>
-<li class="order-title">Name: <%= item.escape('name') %></li>
-<li class="item-total">Price: $<%= parseInt(item.escape('price')).toFixed(2) %></li>
+<div class="row">
+  <div class="col-md-8">
+    <div class="order-title pull-left"><%= item.escape('name') %></div>
+    <div class="num-orders pull-right"><%= item.escape('numOrders') %>x</div>
+  </div>
+  <div class="col-md-4">
+    <div class="item-total">$<%= parseInt(item.escape('price')).toFixed(2) %></div>
+  </div>
+</div>
