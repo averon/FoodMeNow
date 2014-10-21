@@ -45,8 +45,8 @@ FoodMeNow.Views.OrderShow = Backbone.CompositeView.extend({
     } else {
       $('.btn-group').removeClass('open');
     }
- },
- removeAllItems: function () {
-   this.removeAllSubviews('.order-items');
- }
+  },
+  removeAllItems: function () {
+    this.removeAllSubviews('.order-items');
+  }
 });
