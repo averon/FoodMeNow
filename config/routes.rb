@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :restaurants, only: [:index, :show]
-    resources :cuisine_tags, only: [:index, :show]
+    resources :cuisines, only: [:index]
     resources :menu_categories, only: [:show]
     resources :menu_items, only: [:show]
     resources :orders, only: [:new, :create, :show]

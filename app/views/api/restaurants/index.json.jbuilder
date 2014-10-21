@@ -10,7 +10,5 @@ json.array! @restaurants do |restaurant|
   json.rating restaurant.rating
   json.price restaurant.price
   json.img_path restaurant.img_path
-  json.cuisine_tags restaurant.cuisine_tags do |cuisine_tag|
-    json.name cuisine_tag.name
-  end
+  json.cuisine restaurant.cuisine
 end

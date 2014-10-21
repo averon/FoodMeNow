@@ -39,7 +39,8 @@ restaurants = Restaurant.create([
     telephone: "(415) 437-9400",
     rating: 5,
     price: 2,
-    img_path: 'supreme_pizza/restaurant/'
+    img_path: 'supreme_pizza/restaurant/',
+    cuisine: 'Italian'
   },
   { name: "Wonderland",
     street_address: "500 Haight St",
@@ -50,7 +51,8 @@ restaurants = Restaurant.create([
     telephone: "(415) 355-9125",
     rating: 4,
     price: 2,
-    img_path: 'wonderland/restaurant/'
+    img_path: 'wonderland/restaurant/',
+    cuisine: 'Chinese'
   },
   { name: "Frjtz",
     street_address: "590 Valencia St.",
@@ -61,7 +63,8 @@ restaurants = Restaurant.create([
     telephone: "(415) 863-8272",
     rating: 4,
     price: 2,
-    img_path: 'frjtz/restaurant/'
+    img_path: 'frjtz/restaurant/',
+    cuisine: 'Belgian'
   },
   { name: "Kaka Udon Kitchen",
     street_address: "1535 Franklin St",
@@ -72,28 +75,10 @@ restaurants = Restaurant.create([
     telephone: "(415) 577-2380",
     rating: 4,
     price: 2,
-    img_path: 'kaka_udon_kitchen/restaurant/'
-  },
+    img_path: 'kaka_udon_kitchen/restaurant/',
+    cuisine: 'Japanese'
+  }
 
-])
-
-cuisine_tags = CuisineTag.create([
-  { name: 'American' },  # 1 
-  { name: 'Belgian' },   # 2
-  { name: 'Chinese' },   # 3
-  { name: 'Indian' },    # 4
-  { name: 'Italian' },   # 5
-  { name: 'Japanese' },  # 6
-  { name: 'Seafood' },   # 7
-  { name: 'Thai' },      # 8
-  { name: 'Vegetarian' } # 9
-])
-
-cuisine_taggings = CuisineTagging.create([
-  { restaurant_id: 1, cuisine_tag_id: 5},
-  { restaurant_id: 2, cuisine_tag_id: 3},
-  { restaurant_id: 3, cuisine_tag_id: 2},
-  { restaurant_id: 4, cuisine_tag_id: 6},
 ])
 
 menu_categories = MenuCategory.create([

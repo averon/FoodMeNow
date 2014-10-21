@@ -10,8 +10,8 @@ FoodMeNow.Views.RestaurantIndex = Backbone.CompositeView.extend({
   initialize: function () {
     var view = this;
     this.restaurants = FoodMeNow.Collections.restaurants;
-    var cuisines = FoodMeNow.Collections.cuisineTags;
-    var restaurantFilter = new FoodMeNow.Views.RestaurantFilter({ collection: cuisines });
+
+    var restaurantFilter = new FoodMeNow.Views.RestaurantFilter();
 
     this.listenTo(this.restaurants, 'sync add', this.render);
     this.listenTo(this.restaurants, 'add', this.addRestaurantItem);

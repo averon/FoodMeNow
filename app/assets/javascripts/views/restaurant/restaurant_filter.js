@@ -2,11 +2,10 @@ FoodMeNow.Views.RestaurantFilter = Backbone.View.extend({
   className: 'restaurant-filter',
   template: JST['restaurant/filter'],
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(FoodMeNow.Models.cuisines, 'sync', this.renderContent);
   },
   render: function () {
     this.$el.html(this.template());
-    this.renderContent();
     return this;
   },
   events: {
@@ -15,10 +14,10 @@ FoodMeNow.Views.RestaurantFilter = Backbone.View.extend({
   },
   renderContent: function () {
     var restaurantFilter = this;
-    this.collection.each(function (cuisine) {
-      var csn = cuisine.escape('name');
+    this.$('.cuisine-index').empty();
+    FoodMeNow.Models.cuisines.values().forEach(function (cuisine) {
       var $label = $('<label class="cuisine-filter">');
-      var $input = $label.html('<input type="checkbox" name="' + csn + '">' + csn);
+      var $input = $label.html('<input type="checkbox" name="' + cuisine + '">' + cuisine);
       var $li = $('<li class="filter-item">').html($input);
       
       restaurantFilter.$('.cuisine-index').append($li);

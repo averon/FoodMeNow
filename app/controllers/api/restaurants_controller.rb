@@ -16,14 +16,7 @@ module Api
 
     def parse_cuisines
       return Restaurant.all unless params[:cuisines]
-
-      Restaurant
-        .includes(:cuisine_tags)
-        .where(
-          cuisine_tags: {
-            name: params[:cuisines]
-          }
-        )
+      Restaurant.where(cuisine: params[:cuisines])
     end
 
     def parse_prices

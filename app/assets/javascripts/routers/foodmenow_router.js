@@ -10,9 +10,9 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
     'confirmation': 'confirmation'
   },
   restaurantIndex: function () {
-    var cuisines = FoodMeNow.Collections.cuisineTags.clone();
     var restaurantIndex = new FoodMeNow.Views.RestaurantIndex();
     FoodMeNow.Collections.restaurants.fetch();
+    FoodMeNow.Models.cuisines.fetch();
 
     this.swapView(restaurantIndex);
     Backbone.history.navigate('#/san_francisco');
