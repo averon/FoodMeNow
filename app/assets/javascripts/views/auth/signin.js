@@ -28,6 +28,8 @@ FoodMeNow.Views.SignIn = Backbone.View.extend({
     var $parents = $(event.currentTarget).parents();
     $parents.find('#email').val("guest@food-me-now.com");
     $parents.find('#password').val("guest_password");
+
+    this.authorize(event);
   },
   authorize: function (event) {
     event.preventDefault();

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :show, :create, :destroy] do
     resources :delivery_addresses, only: [:index]
   end
-  resources :sessions, only: [:new, :show, :create, :destroy]
+  resources :sessions, only: [:new, :create]
+  get '/current_user', to: 'sessions#show'
+  get '/sign_out', to: 'sessions#destroy'
 
   namespace :api, defaults: { format: :json } do
     resources :restaurants, only: [:index, :show]

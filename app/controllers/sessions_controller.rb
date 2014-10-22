@@ -10,8 +10,13 @@ class SessionsController < ApplicationController
   end
 
   def show
-    @user = User.find_by_id(params[:id])
-    render 'show.json.jbuilder'
+    @user = User.find_by_session_token(session[:session_token])
+
+    if @user
+      render 'show.json.jbuilder'
+    else
+      render json: @user, status: :unprocessable_entity
+    end
   end
 
   def create
@@ -30,9 +35,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by_credentials(user_params)
+    @user = User.find_by_session_token(session[:session_token])
     logout!(@user)
     flash[:success] = ["Successfully logged out!"]
-    render new_session_url
+    render json: @user 
   end
 end

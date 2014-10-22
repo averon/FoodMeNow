@@ -29,7 +29,12 @@ FoodMeNow.Views.Navbar = Backbone.CompositeView.extend({
   },
   signOut: function (event) {
     event.preventDefault();
-    FoodMeNow.currentUser.clear();
+    $.ajax({
+      url: '/sign_out',
+      success: function () {
+        FoodMeNow.currentUser.clear();
+      }
+    });
   },
   checkoutButtonHandler: function () {
     if (FoodMeNow.currentUser.isNew()) {

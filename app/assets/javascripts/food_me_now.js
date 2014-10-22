@@ -4,13 +4,14 @@ window.FoodMeNow = {
   Views: {},
   Routers: {},
   initialize: function () { 
-    FoodMeNow.defineGlobals();
+    this.defineGlobals();
     this.router = new FoodMeNow.Routers.FoodMeNowRouter({
       $rootEl: $('#main'),
     });
     Backbone.history.start();
-    FoodMeNow.createNavbar();
-    FoodMeNow.addModal();
+    this.createNavbar();
+    this.addModal();
+    this.getCurrentUser();
   },
   createNavbar: function () {
     var currentCart = new FoodMeNow.Views.OrderShow({
@@ -33,6 +34,14 @@ window.FoodMeNow = {
   defineGlobals: function () {
     FoodMeNow.currentUser = new FoodMeNow.Models.User();
     FoodMeNow.currentOrder = new FoodMeNow.Models.Order();
+  },
+  getCurrentUser: function () {
+    $.ajax('/current_user', {
+      type: 'GET',
+      success: function (response) {
+        FoodMeNow.currentUser.save(response);
+      }
+    });
   }
 }
 
