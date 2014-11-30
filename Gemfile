@@ -11,6 +11,7 @@ gem 'backbone-on-rails'
 gem 'lol_dba'
 gem 'thin'
 gem 'newrelic_rpm'
+gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 
 gem 'ejs'
 gem 'jquery-rails'

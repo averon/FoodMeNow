@@ -39,7 +39,8 @@ window.FoodMeNow = {
     $.ajax('/current_user', {
       type: 'GET',
       success: function (response) {
-        FoodMeNow.currentUser.save(response);
+        FoodMeNow.currentUser.set(response);
+        FoodMeNow.currentUser.fetch();
       }
     });
   }

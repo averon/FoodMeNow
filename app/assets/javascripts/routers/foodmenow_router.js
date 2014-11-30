@@ -7,7 +7,8 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
     'san_francisco': 'restaurantIndex',
     'restaurants/:id': 'menuShow',
     'checkout': 'checkout',
-    'confirmation': 'confirmation'
+    'confirmation': 'confirmation',
+    'orders': 'orders'
   },
   restaurantIndex: function () {
     var restaurantIndex = new FoodMeNow.Views.RestaurantIndex();
@@ -29,6 +30,10 @@ FoodMeNow.Routers.FoodMeNowRouter = Backbone.Router.extend({
   confirmation: function () {
     var confirmation = new FoodMeNow.Views.Confirmation();
     this.swapView(confirmation);
+  },
+  orders: function () {
+    var orderIndex = new FoodMeNow.Views.OrderIndex({ model: FoodMeNow.currentUser });
+    this.swapView(orderIndex);
   },
   swapView: function (newView) {
     $('#fmn-alerts').empty();

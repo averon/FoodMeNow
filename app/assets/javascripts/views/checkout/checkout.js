@@ -23,6 +23,11 @@ FoodMeNow.Views.Checkout = Backbone.CompositeView.extend({
     if (FoodMeNow.currentOrder.isEmpty()) {
       $('#fmn-alerts').html('<div class="alert alert-danger">Please add items to cart to checkout!</div>');
     } else {
+      FoodMeNow.currentOrder.save({}, {
+        success: function (response, options) {
+          debugger;
+        }
+      });
       Backbone.history.navigate('#/confirmation');
     }
   },

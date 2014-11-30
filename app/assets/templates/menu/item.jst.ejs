@@ -1,6 +1,9 @@
 <li class="item-image"><img src="assets/<%= item.escape('img_path') %>"></li>
 <li class="item-name pull-left"><%= item.escape('name') %></li>
-<li class="item-price pull-right">$<%= parseInt(item.escape('price')).toFixed(2) %></li>
+<li class="item-price pull-right">
+  <% var price = item.escape('price') %>
+  $<%= price.slice(0, price.length - 2) + '.' + price.slice(price.length - 2) %>
+</li>
 
 <div class="item-detail">
 </div>

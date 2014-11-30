@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_session_token(session[:session_token])
 
     if @user
+      login!(@user)
       render 'show.json.jbuilder'
     else
       render json: @user, status: :unprocessable_entity

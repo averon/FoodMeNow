@@ -10,8 +10,14 @@
     <div class="checkout-info">Delivery</div>
   </div>
   <div class="col-md-4">
-    <div class="order-subtotal">$<%= order.escape('subtotal') %></div>
-    <div class="order-tax-and-gratuity">$<%= order.escape('taxAndGratuity') %></div>
+    <div class="order-subtotal">
+      <% var subtotal = order.escape('subtotal') %>
+      $<%= subtotal.slice(0, subtotal.length - 2) + '.' + subtotal.slice(subtotal.length - 2) %>
+    </div>
+    <div class="order-tax-and-gratuity">
+      <% var taxAndGratuity = parseInt(order.escape('tax')) + parseInt(order.escape('tip')).toString() %>
+      $<%= taxAndGratuity.slice(0, taxAndGratuity.length - 2) + '.' + taxAndGratuity.slice(taxAndGratuity.length - 2) %>
+    </div>
     <div class="order-delivery">Free</div>
   </div>
 </div>

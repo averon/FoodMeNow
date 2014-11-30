@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021203620) do
+ActiveRecord::Schema.define(version: 20141024170042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20141021203620) do
     t.integer  "menu_category_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.string   "img_path"
     t.text     "description"
   end
@@ -57,16 +56,29 @@ ActiveRecord::Schema.define(version: 20141021203620) do
   add_index "menu_items", ["menu_category_id"], name: "index_menu_items_on_menu_category_id", using: :btree
   add_index "menu_items", ["name", "menu_category_id"], name: "index_menu_items_on_name_and_menu_category_id", unique: true, using: :btree
   add_index "menu_items", ["name"], name: "index_menu_items_on_name", using: :btree
-  add_index "menu_items", ["user_id"], name: "index_menu_items_on_user_id", using: :btree
+
+  create_table "order_items", force: true do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
-    t.integer  "tip_amount"
+    t.integer  "tip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "price"
+    t.integer  "total"
+    t.integer  "tax"
+    t.integer  "restaurant_id"
+    t.integer  "subtotal"
   end
 
+  add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "payment_methods", force: true do |t|

@@ -20,13 +20,13 @@
       </div>
     </li>
 
-    <li>
-      <% if (!FoodMeNow.currentUser.isNew()) { %>
-        <a class="sign-out" href='#'>Sign out</a>
-      <% } else { %>
-        <a class="sign-in" href='#'>Sign in</a>
-      <% } %>
-    </li>
+    <% if (!FoodMeNow.currentUser.isNew()) { %>
+      <li><a class="my-orders" href='#'>My Orders</a></li>
+      <li><a class="sign-out" href='#'>Sign Out</a></li>
+    <% } else { %>
+      <li><a class="sign-in" href='#'>Sign In</a></li>
+      <li><a class="sign-up" href='#'>Create Account</a> </li>
+    <% } %>
   </ul>
 </nav>
 

@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :delivery_addresses
   has_many :payment_methods  
+  has_many :orders
 
   def self.find_by_credentials(email, password)
     found_user = self.find_by_email(email)

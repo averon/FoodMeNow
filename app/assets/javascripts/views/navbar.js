@@ -21,7 +21,8 @@ FoodMeNow.Views.Navbar = Backbone.CompositeView.extend({
     'hide.bs.dropdown .btn-group': function () { return this.closable; },
     'click .checkout-button': 'checkoutButtonHandler',
     'click .sign-in': 'signIn',
-    'click .sign-out': 'signOut'
+    'click .sign-out': 'signOut',
+    'click .my-orders': 'myOrders',
   }, 
   signIn: function (event) {
     event.preventDefault();
@@ -35,6 +36,10 @@ FoodMeNow.Views.Navbar = Backbone.CompositeView.extend({
         FoodMeNow.currentUser.clear();
       }
     });
+  },
+  myOrders: function (event) {
+    event.preventDefault();
+    Backbone.history.navigate('#/orders')
   },
   checkoutButtonHandler: function () {
     if (FoodMeNow.currentUser.isNew()) {

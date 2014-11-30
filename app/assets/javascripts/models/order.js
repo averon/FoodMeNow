@@ -1,11 +1,11 @@
 FoodMeNow.Models.Order = Backbone.Model.extend({
   urlRoot: '/api/orders',
   initialize: function () {
-    this.set({ price: "0.00", tax: "0.00", tip: "0.00" });
+    this.set({ subtotal: "0.00", tax: "0.00", tip: "0.00", total: "0.00" });
   },
   orderItems: function () {
     this._orderItems = this._orderItems ||
-                    new FoodMeNow.Collections.MenuItems();
+                    new FoodMeNow.Collections.OrderItems();
 
     return this._orderItems;
   },
@@ -31,20 +31,22 @@ FoodMeNow.Models.Order = Backbone.Model.extend({
     this.calculate();
   },
   calculate: function () {
-    var price, tax, tip, taxAndGratuity, total, preTax = 0;
+    var price, tax, tip, total, subtotal = 0;
 
     this._orderItems.each(function (item) {
       price = parseInt(item.escape('price'));
       numOrders = parseInt(item.escape('numOrders'));
-      preTax += price * numOrders;
+      subtotal += price * numOrders;
     });
 
-    tax = preTax * 0.085;
-    tip = (this.isEmpty() ? 0 : 2);
-    taxAndGratuity = tax + tip;
+    tax = subtotal * 0.085;
+    tip = (this.isEmpty() ? 0 : 200);
 
-    total = preTax + tax + tip; 
-    this.set({ subtotal: preTax.toFixed(2), taxAndGratuity: taxAndGratuity.toFixed(2), total: total.toFixed(2) });
+    total = subtotal + tax + tip; 
+    this.set({ subtotal: subtotal,
+               tax: tax,
+               tip: tip,
+               total: total });
   },
   isEmpty: function () {
     return this._orderItems.length === 0

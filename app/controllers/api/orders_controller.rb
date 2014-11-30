@@ -1,23 +1,19 @@
 module Api
   class OrdersController < ApiController
-    def show
-      @order = Order.find_by_id(params[:id])
-      render json: @order
-    end
-
     def new
       @order = Order.new
       render json: @order
     end
 
     def create
-      # after login
+      fail
+      current_user
     end
 
     private
     
     def order_params
-      params.require(:order).permit(:user_id, :tip_amount, :total)
+      params.require(:order).permit(:subtotal, :tip, :tax, :total)
     end
   end
 end

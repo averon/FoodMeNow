@@ -28,7 +28,10 @@
                 <option>5</option>
               </select>
               <div id="offer-show-price pull-right">
-                <span id="offer-base">$<%= item.escape('price') %>.00 Each</span>
+                <span id="offer-base">
+                  <% var price = item.escape('price') %>
+                  $<%= price.slice(0, price.length - 2) + '.' + price.slice(price.length - 2) %>
+                </span>
               </div>
               <input class="submit-item btn btn-lg btn-primary"
                      style="width: 100%"

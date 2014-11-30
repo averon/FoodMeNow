@@ -11,9 +11,18 @@ json.delivery_addresses @user.delivery_addresses do |delivery_info|
   json.tel            delivery_info.tel
 end
 
-json.payment_methods @user.payment_methods do |payment_methods|
+json.payment_methods @user.payment_methods do |payment_method|
   json.card_number payment_method.card_number
   json.exp_date    payment_method.exp_date
   json.cvv         payment_method.cvv
   json.zip         payment_method.zip
+end
+
+json.orders @user.orders do |order|
+  json.restaurant  order.restaurant, :name, :street_address, :city, :state, :zip, :telephone
+  json.tax         order.tax
+  json.tip         order.tip
+  json.total       order.total
+  json.placed_at   order.created_at
+  json.order_items order.order_items, :name, :price
 end

@@ -19,6 +19,12 @@ FoodMeNow.Models.User = Backbone.Model.extend({
     }
     return this._paymentMethod;
   },
+  orders: function () {
+    if (!this._orders) {
+      this._orders = new FoodMeNow.Collections.Orders();
+    }
+    return this._orders;
+  },
   parse: function (response, options) {
     if (response.delivery_addresses) {
       this.deliveryAddresses().set(response.delivery_addresses, { parse: true });
@@ -31,6 +37,10 @@ FoodMeNow.Models.User = Backbone.Model.extend({
     if (response.current_billing, options) {
       this.currentBilling().set(response.current_billing, { parse: true });
       delete response.payment_method
+    }
+    if (response.orders, options) {
+      this.orders().set(response.orders, { parse: true });
+      delete response.orders
     }
     return response;
   }

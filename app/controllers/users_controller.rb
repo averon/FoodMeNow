@@ -4,10 +4,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_credentials(
-      params[:user][:email],
-      params[:user][:password]
-    )
+    @user = User.find_by_id(params[:id])
+#    @user = User.find_by_credentials(
+#      params[:user][:email],
+#      params[:user][:password]
+#    )
     render 'show.json.jbuilder'
   end
 

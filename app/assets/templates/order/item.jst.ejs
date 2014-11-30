@@ -4,6 +4,9 @@
     <div class="num-orders pull-right"><%= item.escape('numOrders') %>x</div>
   </div>
   <div class="col-md-4">
-    <div class="item-total">$<%= parseInt(item.escape('price')).toFixed(2) %></div>
+    <div class="item-total">
+      <% var price = item.escape('price') %>
+      $<%= price.slice(0, price.length - 2) + '.' + price.slice(price.length - 2) %>
+    </div>
   </div>
 </div>
